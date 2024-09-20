@@ -1,10 +1,7 @@
-res://survivor_game.tscn
-res://clouds.gdshader
-res://mob.gd
-res://survivor_game.gd
-res://mob2.tscn
-res://mob2.gd
-res://mob1.tscn
-res://mob1.gd
-res://player.tscn
-res://mob3.tscn
+res://scenes/player.tscn
+res://shaders/player.gdshader
+res://shaders/shadow_player.gdshader
+res://shaders/main.gdshader
+res://scenes/main.tscn
+res://scenes/player.gdshader
+res://shaders/temp.gdshader
