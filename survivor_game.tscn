@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://survivor_game.gd" id="1_5e3k3"]
 [ext_resource type="PackedScene" uid="uid://fodxm0v5s6gy" path="res://player.tscn" id="1_jaq02"]
 [ext_resource type="PackedScene" uid="uid://celgfccesovw7" path="res://tree.tscn" id="2_y1j85"]
-[ext_resource type="PackedScene" uid="uid://deondmpipecw3" path="res://mob.tscn" id="3_fcxp3"]
+[ext_resource type="PackedScene" uid="uid://deondmpipecw3" path="res://mob1.tscn" id="3_fcxp3"]
 
 [sub_resource type="Curve2D" id="Curve2D_553bb"]
 _data = {
@@ -14,14 +14,6 @@ point_count = 5
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5e3k3")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -30
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_right = 1914.0
-offset_bottom = 1081.0
-color = Color(0.470156, 0.876046, 0.439158, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_jaq02")]
 position = Vector2(592, 349)
