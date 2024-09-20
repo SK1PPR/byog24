@@ -10,10 +10,25 @@ extends Node2D
 #func _on_timer_timeout():
 	#spawn_mob()
 	
+var current_wave: int = 0
+const WAVE_GAP: int = 15
+	
 func _ready() -> void:
-	$WaveManager.start_wave(0)
+	$WaveManager.start_wave(current_wave)
 
 
 func _on_player_health_deplete():
 	%GameOverScreen.visible = true
 	get_tree().paused = true
+
+
+func _on_wave_ended() -> void:
+	current_wave += 1
+	$InterWaveTimer.wait_time = WAVE_GAP
+	$InterWaveTimer.start()
+		
+func _wave_timeout_over() -> void:
+	if $WaveManager.waves.size() > current_wave:
+		$WaveManager.start_wave(current_wave)
+	else:
+		print("Ended")

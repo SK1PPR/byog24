@@ -31,7 +31,7 @@ var currentWaitTime: float
 func _ready() -> void:
 	# Sorry Hardcode :(
 	waves.append(Wave.new([10, 0, 0, 0], 1)) # Wave 1
-	waves.append(Wave.new([10, 0, 0, 0], 2)) # Wave 2
+	waves.append(Wave.new([5, 5, 5, 5], 2)) # Wave 2
 	waves.append(Wave.new([10, 0, 0, 0], 3)) # Wave 3
 	waves.append(Wave.new([10, 0, 0, 0], 4)) # Wave 4
 	waves.append(Wave.new([10, 0, 0, 0], 5)) # Wave 5

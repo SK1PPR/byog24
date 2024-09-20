@@ -88,6 +88,11 @@ enemies = Array[Resource]([ExtResource("3_fcxp3"), ExtResource("3_fcxp3"), ExtRe
 [node name="Timer" type="Timer" parent="WaveManager"]
 one_shot = true
 
+[node name="InterWaveTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="health_deplete" from="Player" to="." method="_on_player_health_deplete"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="wave_ended" from="WaveManager" to="." method="_on_wave_ended"]
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="InterWaveTimer" to="." method="_wave_timeout_over"]
