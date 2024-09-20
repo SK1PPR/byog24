@@ -1,7 +1,8 @@
+Timer
+Node
 Label
 ColorRect
 CanvasLayer
-Timer
 PathFollow2D
 Path2D
 ProgressBar
@@ -11,4 +12,3 @@ Sprite2D
 Marker2D
 Camera2D
 CharacterBody2D
-StaticBody2D

@@ -1,11 +1,4 @@
-res://player.tscn
-res://player.gd
-res://characters/happy_boo/happy_boo.tscn
+res://survivor_game.gd
+res://WaveManager/wave_manager.gd
 res://survivor_game.tscn
 res://mob.tscn
-res://mob.gd
-res://gun.tscn
-res://gun.gd
-res://bullet.tscn
-res://bullet.gd
-res://survivor_game.gd

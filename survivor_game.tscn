@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2jg56y1u5tmf"]
+[gd_scene load_steps=7 format=3 uid="uid://b2jg56y1u5tmf"]
 
 [ext_resource type="Script" path="res://survivor_game.gd" id="1_5e3k3"]
 [ext_resource type="PackedScene" uid="uid://fodxm0v5s6gy" path="res://player.tscn" id="1_jaq02"]
 [ext_resource type="PackedScene" uid="uid://celgfccesovw7" path="res://tree.tscn" id="2_y1j85"]
 [ext_resource type="PackedScene" uid="uid://deondmpipecw3" path="res://mob.tscn" id="3_fcxp3"]
+[ext_resource type="Script" path="res://WaveManager/wave_manager.gd" id="5_k8rdd"]
 
 [sub_resource type="Curve2D" id="Curve2D_553bb"]
 _data = {
@@ -78,5 +79,15 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 200
 text = "Game Over"
 
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("5_k8rdd")
+innerRadius = 50.0
+outerRadius = 500.0
+enemies = Array[Resource]([ExtResource("3_fcxp3"), ExtResource("3_fcxp3"), ExtResource("3_fcxp3"), ExtResource("3_fcxp3")])
+
+[node name="Timer" type="Timer" parent="WaveManager"]
+one_shot = true
+
 [connection signal="health_deplete" from="Player" to="." method="_on_player_health_deplete"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]
