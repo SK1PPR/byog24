@@ -1,9 +1,10 @@
-LightOccluder2D
 CollisionShape2D
+Area2D
+PointLight2D
+LightOccluder2D
 StaticBody2D
 ColorRect
 Sprite2D
-PointLight2D
 Camera2D
 CanvasLayer
 Label
@@ -11,4 +12,3 @@ RichTextLabel
 CPUParticles2D
 ShapeCast2D
 CharacterBody2D
-Area2D

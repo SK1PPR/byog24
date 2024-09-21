@@ -144,6 +144,7 @@ texture = ExtResource("2_8yosa")
 flip_v = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.0
 shadow_enabled = true
 texture = ExtResource("4_c5nf6")
 texture_scale = 3.42

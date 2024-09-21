@@ -6,3 +6,5 @@ res://shaders/shadow_player.gdshader
 res://shaders/temp.gdshader
 res://scenes/player.tscn
 res://scripts/camera_2d.gd
+res://scenes/normal_mob.tscn
+res://scripts/normal_mob.gd

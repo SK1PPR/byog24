@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=9 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Shader" path="res://shaders/main.gdshader" id="1_vydfm"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_6qcvf"]
+[ext_resource type="PackedScene" uid="uid://frhhprjg8xrl" path="res://scenes/normal_mob.tscn" id="4_06rle"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vprd6"]
 
@@ -84,3 +85,6 @@ shape = SubResource("WorldBoundaryShape2D_vcv0a")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Boundary/bottom"]
 position = Vector2(-76, -152)
 occluder = SubResource("OccluderPolygon2D_pxi2j")
+
+[node name="triangle" parent="." instance=ExtResource("4_06rle")]
+position = Vector2(168.429, 173.566)
