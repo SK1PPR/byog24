@@ -3,8 +3,9 @@ extends Area2D
 func _on_poison_aura_used(dps: float) -> void:
 	for i in range(20):
 		var enemies = get_overlapping_bodies()
-		for enemy in enemies:
-			enemy.take_damage(dps)
+		if enemies.size() > 0:
+			for enemy in enemies:
+				enemy.take_damage(dps)
 		var timer: Timer = Timer.new()
 		add_child(timer)
 		timer.wait_time = 0.5
