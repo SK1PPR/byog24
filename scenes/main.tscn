@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=31 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
@@ -15,6 +15,14 @@
 [ext_resource type="PackedScene" uid="uid://d0dic2gjfpwdq" path="res://data/weapons/handgun.tscn" id="11_o4d2n"]
 [ext_resource type="PackedScene" uid="uid://c2jso6b04bh2i" path="res://data/weapons/shotgun.tscn" id="14_kdi8e"]
 [ext_resource type="PackedScene" uid="uid://j4wfweum8nor" path="res://data/weapons/revolver.tscn" id="15_ibyf6"]
+[ext_resource type="Script" path="res://scripts/PowerupRange.gd" id="16_0oi6n"]
+[ext_resource type="Script" path="res://scripts/powerup_manager.gd" id="16_xl5kd"]
+[ext_resource type="Script" path="res://scripts/first_aid.gd" id="17_3jxuv"]
+[ext_resource type="Script" path="res://scripts/shield.gd" id="18_v7ry1"]
+[ext_resource type="Script" path="res://scripts/poison_aura.gd" id="19_0vmpu"]
+[ext_resource type="Script" path="res://scripts/card_select_menu.gd" id="20_8gvqi"]
+[ext_resource type="PackedScene" uid="uid://dvkb7fkt3u40n" path="res://scenes/card_box.tscn" id="21_vy7i5"]
+[ext_resource type="Script" path="res://scripts/wave_spawn_text.gd" id="23_0yoft"]
 
 [sub_resource type="Shader" id="Shader_mlybf"]
 code = "// https://www.shadertoy.com/view/MdffD7
@@ -157,6 +165,8 @@ distance = -13.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pxi2j"]
 polygon = PackedVector2Array(-6056, 192, 5918, 204, 5918, 1155, -6176, 1199)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oeyq2"]
+
 [node name="main" type="Node2D"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_hvbvw")
@@ -262,6 +272,105 @@ position = Vector2(-86, 81)
 [node name="revolver" parent="player" instance=ExtResource("15_ibyf6")]
 position = Vector2(42, -122)
 
+[node name="PowerupRange" type="Area2D" parent="player"]
+collision_mask = 2
+script = ExtResource("16_0oi6n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/PowerupRange"]
+position = Vector2(-13, -45)
+scale = Vector2(30, 30)
+shape = SubResource("CircleShape2D_oeyq2")
+
+[node name="GameOverScreen" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOverScreen/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -543.0
+offset_top = -136.5
+offset_right = 543.0
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "Game Over"
+
+[node name="PowerupManager" type="Node" parent="."]
+script = ExtResource("16_xl5kd")
+
+[node name="FirstAid" type="Node" parent="PowerupManager"]
+script = ExtResource("17_3jxuv")
+
+[node name="Shield" type="Node" parent="PowerupManager"]
+script = ExtResource("18_v7ry1")
+
+[node name="PoisonAura" type="Node" parent="PowerupManager"]
+script = ExtResource("19_0vmpu")
+
+[node name="CardSelect" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("20_8gvqi")
+
+[node name="ColorRect" type="ColorRect" parent="CardSelect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card_Box" parent="CardSelect/ColorRect" instance=ExtResource("21_vy7i5")]
+z_index = 100
+position = Vector2(118, 217)
+scale = Vector2(2, 2)
+
+[node name="Button" type="Button" parent="CardSelect"]
+offset_left = 1591.0
+offset_top = 930.0
+offset_right = 1837.0
+offset_bottom = 1018.0
+theme_override_font_sizes/font_size = 45
+text = "Continue"
+
+[node name="WaveSpawnText" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("23_0yoft")
+
+[node name="Label" type="Label" parent="WaveSpawnText"]
+offset_left = 645.0
+offset_top = 390.0
+offset_right = 1330.0
+offset_bottom = 698.0
+theme_override_font_sizes/font_size = 100
+text = "Wave 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="wave_ended" from="WaveManager" to="." method="_on_wave_ended"]
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="InterWaveTimer" to="." method="_wave_timeout_over"]
+[connection signal="first_aid_used" from="PowerupManager/FirstAid" to="player" method="_on_first_aid_used"]
+[connection signal="shield_used" from="PowerupManager/Shield" to="player" method="_on_shield_shield_used"]
+[connection signal="poison_aura_used" from="PowerupManager/PoisonAura" to="player/PowerupRange" method="_on_poison_aura_used"]
+[connection signal="card_selected" from="CardSelect" to="." method="_on_card_selected"]
+[connection signal="pressed" from="CardSelect/Button" to="CardSelect" method="_on_continue_button_pressed"]
+[connection signal="visibility_changed" from="WaveSpawnText" to="WaveSpawnText" method="on_visiblilty_change"]

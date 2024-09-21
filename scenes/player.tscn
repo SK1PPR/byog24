@@ -34,6 +34,7 @@ script/source = "extends CharacterBody2D
 @export var max_tilt_angle = 15.0
 @export var bounce_height = 10
 @export var bounce_speed = 10.0
+@export var damageFactor: float = 1.0
 
 @onready var sprite = $Sprite2D
 @onready var shadow = $shadow # Reference to the shadow Sprite2D
@@ -86,7 +87,7 @@ func _physics_process(delta):
 		sprite.position = initial_rect_position
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 1:
-		health -= (DAMAGE_RATE * overlapping_mobs.size() * delta)*0.1
+		health -= (DAMAGE_RATE * overlapping_mobs.size() * delta)*0.1*damageFactor
 		if health <= 0.0:
 			health_deplete.emit()
 			get_tree().change_scene_to_file(\"res://scenes/game_over.tscn\")
@@ -124,6 +125,20 @@ func velocity_decel(delta: float) -> Vector2:
 		return Vector2()
 	var speed_new = clamp((1-t_new)*(1-t_new), 0, 1)
 	return velocity.normalized() * speed_new * MAX_SPEED
+
+func _on_first_aid_used(inc: int) -> void:
+	health += inc
+	
+func _on_shield_shield_used(shieldTime: int, df: float) -> void:
+	damageFactor = df
+	var timer: Timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = shieldTime
+	timer.one_shot = true
+	timer.start()
+	await timer.timeout
+	timer.queue_free()
+	damageFactor = 1.0
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bs8r"]

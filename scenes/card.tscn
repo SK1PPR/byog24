@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8b3bst0kbt0h"]
+
+[ext_resource type="Script" path="res://scripts/card_manager.gd" id="1_2svf2"]
+[ext_resource type="Texture2D" uid="uid://oukasxxj1e18" path="res://assets/CardBorder.jpg" id="2_32b5o"]
+[ext_resource type="Script" path="res://scripts/is_inside.gd" id="3_euac2"]
+[ext_resource type="Texture2D" uid="uid://dp3rpm8o5sa5" path="res://assets/download.jpg" id="3_kqq0a"]
+[ext_resource type="Texture2D" uid="uid://yy2kd11iwbis" path="res://icon.svg" id="4_c1pa6"]
+
+[node name="Card" type="MarginContainer"]
+offset_right = 250.0
+offset_bottom = 350.0
+pivot_offset = Vector2(125, 175)
+script = ExtResource("1_2svf2")
+border = ExtResource("2_32b5o")
+selectBorder = ExtResource("3_kqq0a")
+
+[node name="Border" type="Sprite2D" parent="."]
+position = Vector2(125, 175)
+rotation = 1.5708
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("2_32b5o")
+script = ExtResource("3_euac2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 205.0
+offset_right = 257.0
+offset_bottom = 228.0
+scale = Vector2(0.95, 0.95)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Hahahha"
+horizontal_alignment = 1
+
+[node name="Image" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(122, 133)
+texture = ExtResource("4_c1pa6")

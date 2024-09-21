@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://data/weapons/weapon.gd" id="1_g04jr"]
 [ext_resource type="Resource" uid="uid://dw02mj2l8m5d3" path="res://data/weapons/handgun.tres" id="2_xb0sl"]
 [ext_resource type="PackedScene" uid="uid://bbx6xtbc5y65b" path="res://data/weapons/bullet.tscn" id="3_gcn2k"]
-[ext_resource type="Texture2D" uid="uid://bxrx8pp04xpee" path="res://assets/shotgun.png" id="4_sdova"]
+[ext_resource type="Texture2D" uid="uid://bxrx8pp04xpee" path="res://assets/Shotgun.png" id="4_sdova"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7pm3c"]
 
