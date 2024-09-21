@@ -8,3 +8,9 @@ res://scenes/player.tscn
 res://scripts/camera_2d.gd
 res://scenes/normal_mob.tscn
 res://scripts/normal_mob.gd
+res://data/weapons/pistol.tscn
+res://data/weapons/bullet.tscn
+res://scenes/teleporter_mob.tscn
+res://scenes/triangle.tscn
+res://scenes/square.tscn
+res://data/weapons/weapon.gd

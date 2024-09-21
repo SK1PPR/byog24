@@ -1,12 +1,28 @@
 [gd_scene load_steps=9 format=3 uid="uid://c1232bb68fhy6"]
 
-[ext_resource type="Shader" path="res://scenes/player.gdshader" id="1_3ck3v"]
 [ext_resource type="Texture2D" uid="uid://cldwk3rcvt8hh" path="res://assets/player_new.png" id="2_8yosa"]
 [ext_resource type="Texture2D" uid="uid://b4utmi0oj1lxd" path="res://assets/shadow.png" id="2_pc3o8"]
 [ext_resource type="Texture2D" uid="uid://bx0qlsrfsx011" path="res://assets/pointlight.webp" id="4_c5nf6"]
 
+[sub_resource type="Shader" id="Shader_6dngu"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_der1l"]
-shader = ExtResource("1_3ck3v")
+shader = SubResource("Shader_6dngu")
 
 [sub_resource type="GDScript" id="GDScript_dy3ap"]
 script/source = "extends CharacterBody2D
@@ -40,6 +56,11 @@ func _physics_process(delta):
 	var direction = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
 	velocity = handle_move(direction, delta)
 	move_and_slide()
+	
+	if velocity.x < 0: 
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
 	
 	time += delta
 	var bounce_offset = sprite.scale.x + sin(bounce_speed*time)/(2*bounce_height)
@@ -108,6 +129,7 @@ size = Vector2(72, 129)
 
 [node name="player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_der1l")
+collision_mask = 2
 motion_mode = 1
 wall_min_slide_angle = 0.441568
 script = SubResource("GDScript_dy3ap")

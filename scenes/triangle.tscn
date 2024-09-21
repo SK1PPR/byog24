@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://frhhprjg8xrl"]
 
-[ext_resource type="Script" path="res://scripts/normal_mob.gd" id="1_rsi32"]
+[ext_resource type="Script" path="res://scripts/triangle.gd" id="1_rsi32"]
 [ext_resource type="Texture2D" uid="uid://dfo7suu13eoru" path="res://assets/triangle.png" id="2_bwsui"]
 [ext_resource type="Texture2D" uid="uid://bx0qlsrfsx011" path="res://assets/pointlight.webp" id="3_n86wb"]
 
