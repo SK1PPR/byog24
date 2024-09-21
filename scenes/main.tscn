@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=8 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Shader" path="res://shaders/main.gdshader" id="1_vydfm"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_6qcvf"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vprd6"]
 
@@ -22,32 +23,64 @@ shader_parameter/bottom_border_jitter = 6.0
 shader_parameter/noise_intensity = 0.1
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_vprd6")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbn2t"]
-shader = ExtResource("1_vydfm")
-shader_parameter/vhs_resolution = Vector2(320, 240)
-shader_parameter/samples = 2
-shader_parameter/crease_noise = 1.0
-shader_parameter/crease_opacity = 0.5
-shader_parameter/filter_intensity = 0.1
-shader_parameter/tape_crease_smear = 0.2
-shader_parameter/tape_crease_intensity = 0.2
-shader_parameter/tape_crease_jitter = 0.1
-shader_parameter/tape_crease_speed = 0.5
-shader_parameter/tape_crease_discoloration = 1.0
-shader_parameter/bottom_border_thickness = 6.0
-shader_parameter/bottom_border_jitter = 6.0
-shader_parameter/noise_intensity = 0.5
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vcv0a"]
+distance = -13.0
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_34xaa"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pxi2j"]
+polygon = PackedVector2Array(-6056, 192, 5918, 204, 5918, 1155, -6176, 1199)
 
 [node name="main" type="Node2D"]
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_hvbvw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_dbn2t")
-position = Vector2(590, 329)
-scale = Vector2(1155.5, 646.5)
-texture = SubResource("CanvasTexture_34xaa")
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -4122.0
+offset_top = -3322.0
+offset_right = -4082.0
+offset_bottom = -3282.0
+scale = Vector2(223.948, 171.64)
+color = Color(0.120162, 0.138078, 0.245451, 1)
 
 [node name="player" parent="." instance=ExtResource("1_j7f5f")]
-position = Vector2(169, 187)
+position = Vector2(-505, 323)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_6qcvf")
+playe_path = NodePath("../player")
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="right" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(2450, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_vcv0a")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Boundary/right"]
+position = Vector2(-76, -152)
+occluder = SubResource("OccluderPolygon2D_pxi2j")
+
+[node name="left" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(-2450, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_vcv0a")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Boundary/left"]
+position = Vector2(-76, -152)
+occluder = SubResource("OccluderPolygon2D_pxi2j")
+
+[node name="top" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(0, -2200)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_vcv0a")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Boundary/top"]
+position = Vector2(-76, -152)
+occluder = SubResource("OccluderPolygon2D_pxi2j")
+
+[node name="bottom" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(0, 2200)
+shape = SubResource("WorldBoundaryShape2D_vcv0a")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Boundary/bottom"]
+position = Vector2(-76, -152)
+occluder = SubResource("OccluderPolygon2D_pxi2j")

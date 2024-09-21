@@ -1,7 +1,8 @@
-res://scenes/player.tscn
-res://shaders/player.gdshader
-res://shaders/shadow_player.gdshader
-res://shaders/main.gdshader
 res://scenes/main.tscn
 res://scenes/player.gdshader
+res://shaders/main.gdshader
+res://shaders/player.gdshader
+res://shaders/shadow_player.gdshader
 res://shaders/temp.gdshader
+res://scenes/player.tscn
+res://scripts/camera_2d.gd

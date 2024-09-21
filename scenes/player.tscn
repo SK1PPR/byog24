@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1232bb68fhy6"]
+[gd_scene load_steps=9 format=3 uid="uid://c1232bb68fhy6"]
 
 [ext_resource type="Shader" path="res://scenes/player.gdshader" id="1_3ck3v"]
+[ext_resource type="Texture2D" uid="uid://cldwk3rcvt8hh" path="res://assets/player_new.png" id="2_8yosa"]
+[ext_resource type="Texture2D" uid="uid://b4utmi0oj1lxd" path="res://assets/shadow.png" id="2_pc3o8"]
+[ext_resource type="Texture2D" uid="uid://bx0qlsrfsx011" path="res://assets/pointlight.webp" id="4_c5nf6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_der1l"]
 shader = ExtResource("1_3ck3v")
@@ -8,54 +11,92 @@ shader = ExtResource("1_3ck3v")
 [sub_resource type="GDScript" id="GDScript_dy3ap"]
 script/source = "extends CharacterBody2D
 
-@export var speed = 300.0
+@export var MAX_SPEED = 800.0
+@export var T_MAX_SPEED = 0.75
+@export var T_STOP = 0.75
 @export var tilt_speed = 5.0
 @export var max_tilt_angle = 15.0
 @export var bounce_height = 10
 @export var bounce_speed = 10.0
 
-@onready var color_rect = $ColorRect
+@onready var sprite = $Sprite2D
+@onready var shadow = $shadow # Reference to the shadow Sprite2D
 @onready var collision_shape = $CollisionShape2D
+
+signal health_deplete
+
+var health = 100.0
+const DAMAGE_RATE = 5.0
+
 
 var tilt_angle = 0.0
 var time = 0.0
 var initial_rect_position
 
 func _ready():
-	initial_rect_position = color_rect.position
+	initial_rect_position = sprite.position
 
 func _physics_process(delta):
 	var direction = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
-	velocity = direction * speed
-	
+	velocity = handle_move(direction, delta)
 	move_and_slide()
 	
 	time += delta
-	var bounce_offset = 1 + sin(bounce_speed*time)/(2*bounce_height)
-	$ColorRect.scale = Vector2(1, -bounce_offset)
+	var bounce_offset = sprite.scale.x + sin(bounce_speed*time)/(2*bounce_height)
+	sprite.scale = Vector2(sprite.scale.x, -bounce_offset)
 	
 	# Tilt logic
 	var target_tilt = 0.0
 	if direction.x != 0:
 		target_tilt = direction.x * max_tilt_angle
-	
 	tilt_angle = lerp(tilt_angle, target_tilt, tilt_speed * delta)
+	
+	# Apply the tilt to the player
 	rotation_degrees = tilt_angle
+	
+	# Reverse tilt for the shadow to keep it straight
+	shadow.rotation_degrees = -tilt_angle
 	
 	# Idle bounce
 	if direction == Vector2.ZERO:
 		var bounce_offset_jump = sin(time * bounce_speed) * bounce_height/16
-		color_rect.position = initial_rect_position + Vector2(0, bounce_offset_jump)
+		sprite.position = initial_rect_position + Vector2(0, bounce_offset_jump)
 	else:
-		color_rect.position = initial_rect_position
+		sprite.position = initial_rect_position
 
 func _process(delta):
 	# Smooth color change based on movement
-	var speed_factor = velocity.length() / speed
-	var r = lerp(1.0, 0.5, speed_factor)
-	var g = lerp(1.0, 0.7, speed_factor)
-	var b = lerp(1.0, 1.0, speed_factor)
+	pass
 	#color_rect.color = Color(r, g, b)
+
+func handle_move(direction: Vector2, delta: float) -> Vector2:
+	if direction.length_squared() > 0:
+		return velocity_accel(delta, direction)
+	else:
+		return velocity_decel(delta)
+		
+func velocity_accel(delta: float, direction: Vector2) -> Vector2:
+	velocity.clampf(0.0, MAX_SPEED)
+	var speed = velocity.length() / MAX_SPEED
+	var t: float = 1 - sqrt(1 - speed)
+	if is_nan(t):
+		t = 1
+	var t_new: float = t + (delta/T_MAX_SPEED)
+	if t_new >= 1:
+		return direction.normalized() * MAX_SPEED
+	var speed_new: float = clamp(1 - (1 - t_new)*(1 - t_new), 0 , 1)
+	return direction.normalized() * speed_new * MAX_SPEED
+
+func velocity_decel(delta: float) -> Vector2:
+	var speed = velocity.clampf(0.0, MAX_SPEED).length() / MAX_SPEED
+	var t: float = 1 - sqrt(speed)
+	if is_nan(t):
+		t = 1
+	var t_new: float = t + (delta/T_STOP)
+	if t_new >= T_STOP:
+		return Vector2()
+	var speed_new = clamp((1-t_new)*(1-t_new), 0, 1)
+	return velocity.normalized() * speed_new * MAX_SPEED
 "
 
 [sub_resource type="Gradient" id="Gradient_dg3yn"]
@@ -63,7 +104,7 @@ offsets = PackedFloat32Array(0, 0.441704, 0.847534, 1)
 colors = PackedColorArray(0.179995, 0.181356, 0.123274, 1, 0.975336, 0.975336, 0.975336, 1, 0.976644, 0.976644, 0.976644, 1, 1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4exp"]
-size = Vector2(38, 64)
+size = Vector2(72, 129)
 
 [node name="player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_der1l")
@@ -71,10 +112,16 @@ motion_mode = 1
 wall_min_slide_angle = 0.441568
 script = SubResource("GDScript_dy3ap")
 
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0.408329, 0.408329, 0.408329, 1)
+self_modulate = Color(0.340339, 0.340339, 0.340339, 1)
+position = Vector2(-4, 68)
+texture = ExtResource("2_pc3o8")
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(2, -48)
 amount = 20
-lifetime = 0.4
+lifetime = 0.5
 randomness = 1.0
 lifetime_randomness = 1.0
 emission_shape = 1
@@ -84,17 +131,19 @@ spread = 20.0
 gravity = Vector2(0, 0)
 scale_amount_min = 5.0
 scale_amount_max = 10.0
-color = Color(0.823245, 0.945324, 0.993273, 1)
+color = Color(0.929412, 0.109804, 0.141176, 1)
 color_ramp = SubResource("Gradient_dg3yn")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -34.0
-offset_right = 22.0
-offset_bottom = 34.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_y4exp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_8yosa")
+flip_v = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("4_c5nf6")
+texture_scale = 3.42

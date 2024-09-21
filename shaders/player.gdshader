@@ -25,18 +25,18 @@ vec2 wave(vec2 uv, float time) {
 void fragment() {
 	vec2 center_position = -1.0 + 2.0 * UV / (1.0 / TEXTURE_PIXEL_SIZE);
 	float center_distance = length(center_position);
-	
+
 	float ripple = sin(center_distance * -frequency * PI + ripple_rate * TIME) * amplitude / (center_distance + 1.0);
-	
+
 	vec2 uv = FRAGCOORD.xy / (1.0 / SCREEN_PIXEL_SIZE).xy + (center_position/center_distance) * ripple * wave_amplitude;
     vec2 background_wave = wave(uv, TIME);
 	vec4 background_texture = texture(SCREEN_TEXTURE,background_wave) * sqrt(amplitude);
 
-	float alpha_scalar = (1.0 - min(center_distance, 1.0)) * background_texture.x * 2.5; 
-	
+	float alpha_scalar = (1.0 - min(center_distance, 1.0)) * background_texture.x * 2.5;
+
 	background_texture.a *= 1.0 * alpha_scalar * (ripple + background_texture.x * background_texture.y);
 	background_texture.a = max(background_texture.a - (background_texture.y * 0.45), 0.0);
-	
+
 	COLOR = vec4(background_texture.xyz, background_texture.a);
 
 }
