@@ -8,4 +8,5 @@ name = "Bullet"
 bullet_speed = 300.0
 damage = 1
 fire_rate = 1.0
+spread = 0.5
 range = 350.0

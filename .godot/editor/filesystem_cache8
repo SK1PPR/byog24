@@ -1,36 +1,37 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1726924795
+::res://::1726925400
 icon.svg::CompressedTexture2D::1735734729081798422::1726920286::1726920307::1::::<><>::
-::res://assets/::1726924319
-Assault RIfle.png::CompressedTexture2D::4659638282619136724::1726923845::1726923852::1::::<><>::
-bullet.png::CompressedTexture2D::6028004537553096919::1726924301::1726924319::1::::<><>::
-Machine Gun.png::CompressedTexture2D::1763348523696655478::1726923845::1726923852::1::::<><>::
-Pistol.png::CompressedTexture2D::6483918648938666958::1726923845::1726923852::1::::<><>::
-player_new.png::CompressedTexture2D::5552466909481847009::1726921955::1726921958::1::::<><>::
-pointlight.webp::CompressedTexture2D::4053365618770700202::1726921955::1726921958::1::::<><>::
-radial.webp::CompressedTexture2D::6449429290974313080::1726921955::1726921958::1::::<><>::
-RPG.png::CompressedTexture2D::5439078449532080664::1726923845::1726923852::1::::<><>::
-shadow.png::CompressedTexture2D::4464360216122727197::1726921955::1726921958::1::::<><>::
-Shotgun.png::CompressedTexture2D::63897635882567310::1726923845::1726923852::1::::<><>::
-Sniper Rifle.png::CompressedTexture2D::2966699689448937842::1726923845::1726923852::1::::<><>::
-::res://data/::1726923487
-::res://data/weapons/::1726924743
-bullet.gd::GDScript::-1::1726912090::0::1::::<>Area2D<>::
-bullet.tscn::PackedScene::2506014515330479513::1726924743::0::1::::<><>::res://data/weapons/bullet.gd<>uid://cr5ambi3niykt::::res://assets/bullet.png
-pistol.tres::Resource/WeaponStats::510871819127102188::1726912092::0::1::::<><>::res://data/weapons/weapon_stats.gd
-pistol.tscn::PackedScene::4095366808689264969::1726924743::0::1::::<><>::res://data/weapons/weapon.gd<>uid://hjp8p03587nk::::res://data/weapons/pistol.tres<>uid://cym4gs6hhrdbi::::res://assets/Pistol.png<>uid://bbx6xtbc5y65b::::res://data/weapons/bullet.tscn
-weapon.gd::GDScript::-1::1726912092::0::1::::Weapon<>Area2D<>::
-weapon_stats.gd::GDScript::-1::1726912092::0::1::::WeaponStats<>Resource<>::
-::res://scenes/::1726924795
-main.tscn::PackedScene::2885544254613228449::1726924780::0::1::::<><>::uid://c1232bb68fhy6::::res://scenes/player.tscn<>res://scripts/camera_2d.gd<>uid://byl3dfrhj11vx::::res://data/weapons/pistol.tscn<>uid://frhhprjg8xrl::::res://scenes/triangle.tscn
-player.tscn::PackedScene::6655237849088508483::1726924743::0::1::::<><>::uid://cldwk3rcvt8hh::::res://assets/player_new.png<>uid://b4utmi0oj1lxd::::res://assets/shadow.png<>uid://bx0qlsrfsx011::::res://assets/pointlight.webp
-square.tscn::PackedScene::472741893700722862::1726924795::0::1::::<><>::res://scripts/triangle.gd<>uid://dfo7suu13eoru::::res://assets/triangle.png<>uid://bx0qlsrfsx011::::res://assets/pointlight.webp
-triangle.tscn::PackedScene::386476974046065905::1726924795::0::1::::<><>::res://scripts/triangle.gd<>uid://dfo7suu13eoru::::res://assets/triangle.png<>uid://bx0qlsrfsx011::::res://assets/pointlight.webp
-::res://scripts/::1726924795
-camera_2d.gd::GDScript::-1::1726921955::0::1::::<>Camera2D<>::
-teleporter_mob.gd::GDScript::-1::1726924212::0::1::::<>CharacterBody2D<>::
-triangle.gd::GDScript::-1::1726922905::0::1::::<>CharacterBody2D<>::
-::res://shaders/::1726924795
-player.gdshader::Shader::-1::1726924795::0::1::::<><>::
-shadow_player.gdshader::Shader::-1::1726924795::0::1::::<><>::
-temp.gdshader::Shader::-1::1726924795::0::1::::<><>::
+::res://assets/::1726925652
+Assault RIfle.png::CompressedTexture2D::4659638282619136724::1726925399::1726925401::1::::<><>::
+bullet.png::CompressedTexture2D::6028004537553096919::1726925399::1726925401::1::::<><>::
+Machine Gun.png::CompressedTexture2D::1763348523696655478::1726925399::1726925401::1::::<><>::
+Pistol.png::CompressedTexture2D::6483918648938666958::1726925399::1726925402::1::::<><>::
+player_new.png::CompressedTexture2D::5552466909481847009::1726925399::1726925402::1::::<><>::
+pointlight.webp::CompressedTexture2D::4053365618770700202::1726925399::1726925401::1::::<><>::
+radial.webp::CompressedTexture2D::6449429290974313080::1726925400::1726925402::1::::<><>::
+RPG.png::CompressedTexture2D::5439078449532080664::1726925399::1726925401::1::::<><>::
+shadow.png::CompressedTexture2D::4464360216122727197::1726925400::1726925401::1::::<><>::
+Shotgun.png::CompressedTexture2D::63897635882567310::1726925399::1726925401::1::::<><>::
+Sniper Rifle.png::CompressedTexture2D::2966699689448937842::1726925399::1726925401::1::::<><>::
+square.png::CompressedTexture2D::2994262359353328063::1726925643::1726925724::1::::<><>::
+::res://data/::1726925400
+::res://data/weapons/::1726925620
+bullet.gd::GDScript::-1::1726925400::0::1::::<>Area2D<>::
+bullet.tscn::PackedScene::2506014515330479513::1726925620::0::1::::<><>::res://data/weapons/bullet.gd<>uid://cr5ambi3niykt::::res://assets/bullet.png
+pistol.tres::Resource/WeaponStats::510871819127102188::1726925411::0::1::::<><>::res://data/weapons/weapon_stats.gd
+pistol.tscn::PackedScene::4095366808689264969::1726925620::0::1::::<><>::res://data/weapons/weapon.gd<>uid://hjp8p03587nk::::res://data/weapons/pistol.tres<>uid://cym4gs6hhrdbi::::res://assets/Pistol.png<>uid://bbx6xtbc5y65b::::res://data/weapons/bullet.tscn
+weapon.gd::GDScript::-1::1726925429::0::1::::Weapon<>Area2D<>::
+weapon_stats.gd::GDScript::-1::1726925400::0::1::::WeaponStats<>Resource<>::
+::res://scenes/::1726925620
+main.tscn::PackedScene::2885544254613228449::1726925620::0::1::::<><>::uid://c1232bb68fhy6::::res://scenes/player.tscn<>res://scripts/camera_2d.gd<>uid://byl3dfrhj11vx::::res://data/weapons/pistol.tscn<>uid://frhhprjg8xrl::::res://scenes/triangle.tscn
+player.tscn::PackedScene::6655237849088508483::1726925620::0::1::::<><>::uid://cldwk3rcvt8hh::::res://assets/player_new.png<>uid://b4utmi0oj1lxd::::res://assets/shadow.png<>uid://bx0qlsrfsx011::::res://assets/pointlight.webp
+square.tscn::PackedScene::472741893700722862::1726925620::0::1::::<><>::res://scripts/triangle.gd<>uid://dfo7suu13eoru::::res://assets/triangle.png<>uid://bx0qlsrfsx011::::res://assets/pointlight.webp
+triangle.tscn::PackedScene::386476974046065905::1726925620::0::1::::<><>::res://scripts/triangle.gd<>uid://dfo7suu13eoru::::res://assets/triangle.png<>uid://bx0qlsrfsx011::::res://assets/pointlight.webp
+::res://scripts/::1726925400
+camera_2d.gd::GDScript::-1::1726925400::0::1::::<>Camera2D<>::
+square.gd::GDScript::-1::1726925400::0::1::::<>CharacterBody2D<>::
+triangle.gd::GDScript::-1::1726925400::0::1::::<>CharacterBody2D<>::
+::res://shaders/::1726925620
+player.gdshader::Shader::-1::1726925620::0::1::::<><>::
+shadow_player.gdshader::Shader::-1::1726925620::0::1::::<><>::
+temp.gdshader::Shader::-1::1726925620::0::1::::<><>::

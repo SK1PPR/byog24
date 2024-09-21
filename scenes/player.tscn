@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1232bb68fhy6"]
+[gd_scene load_steps=11 format=3 uid="uid://c1232bb68fhy6"]
 
 [ext_resource type="Texture2D" uid="uid://cldwk3rcvt8hh" path="res://assets/player_new.png" id="2_8yosa"]
 [ext_resource type="Texture2D" uid="uid://b4utmi0oj1lxd" path="res://assets/shadow.png" id="2_pc3o8"]
@@ -77,13 +77,18 @@ func _physics_process(delta):
 	
 	# Reverse tilt for the shadow to keep it straight
 	shadow.rotation_degrees = -tilt_angle
-	
 	# Idle bounce
 	if direction == Vector2.ZERO:
 		var bounce_offset_jump = sin(time * bounce_speed) * bounce_height/16
 		sprite.position = initial_rect_position + Vector2(0, bounce_offset_jump)
 	else:
 		sprite.position = initial_rect_position
+	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
+	if overlapping_mobs.size() > 0:
+		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
+		%ProgressBar.value = health
+		if health <= 0.0:
+			health_deplete.emit()
 
 func _process(delta):
 	# Smooth color change based on movement
@@ -126,6 +131,17 @@ colors = PackedColorArray(0.179995, 0.181356, 0.123274, 1, 0.975336, 0.975336, 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4exp"]
 size = Vector2(72, 129)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4s222"]
+radius = 44.0
+height = 166.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6roua"]
+bg_color = Color(0, 0.712908, 0.44304, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_der1l")
@@ -170,3 +186,20 @@ energy = 2.0
 shadow_enabled = true
 texture = ExtResource("4_c5nf6")
 texture_scale = 3.42
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_4s222")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -2.0
+offset_top = 92.0
+offset_right = 2.0
+offset_bottom = 119.0
+theme_override_styles/background = SubResource("StyleBoxFlat_6roua")
+value = 100.0
+rounded = true
+show_percentage = false

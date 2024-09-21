@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://frhhprjg8xrl"]
+[gd_scene load_steps=7 format=3 uid="uid://frhhprjg8xrl"]
 
 [ext_resource type="Script" path="res://scripts/triangle.gd" id="1_rsi32"]
+[ext_resource type="Texture2D" uid="uid://b4utmi0oj1lxd" path="res://assets/shadow.png" id="2_077nh"]
 [ext_resource type="Texture2D" uid="uid://dfo7suu13eoru" path="res://assets/triangle.png" id="2_bwsui"]
 [ext_resource type="Texture2D" uid="uid://bx0qlsrfsx011" path="res://assets/pointlight.webp" id="3_n86wb"]
 
@@ -13,6 +14,12 @@ size = Vector2(84, 86)
 [node name="triangle" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_rsi32")
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0.408329, 0.408329, 0.408329, 1)
+self_modulate = Color(0.340339, 0.340339, 0.340339, 1)
+position = Vector2(-2, 54)
+texture = ExtResource("2_077nh")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_kxj3v")

@@ -39,7 +39,6 @@ func _physics_process(_delta):
 		look_at(target_enemy.global_position)
 		if can_fire:
 			fire()
-	print(global_rotation_degrees)
 	if global_rotation_degrees < -90 or global_rotation_degrees > 90:
 		%Gun.flip_v = true
 	else:

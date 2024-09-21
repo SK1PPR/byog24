@@ -14,3 +14,8 @@ res://scenes/teleporter_mob.tscn
 res://scenes/triangle.tscn
 res://scenes/square.tscn
 res://data/weapons/weapon.gd
+res://data/weapons/pistol.tres
+res://scripts/triangle.gd
+res://scripts/square.gd
+res://scripts/wave_manager.gd
+res://scripts/main.gd

@@ -24,9 +24,9 @@ shape = SubResource("CircleShape2D_7pm3c")
 
 [node name="Gun" type="Sprite2D" parent="pivot"]
 unique_name_in_owner = true
-position = Vector2(52, -34)
+position = Vector2(24, -22)
 scale = Vector2(2.74981, 2.9966)
 texture = ExtResource("3_kiadl")
 
 [node name="shooting_point" type="Marker2D" parent="pivot"]
-position = Vector2(75, -38)
+position = Vector2(47, -26)
