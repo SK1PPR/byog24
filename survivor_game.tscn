@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2jg56y1u5tmf"]
+[gd_scene load_steps=9 format=3 uid="uid://b2jg56y1u5tmf"]
 
 [ext_resource type="Script" path="res://survivor_game.gd" id="1_5e3k3"]
 [ext_resource type="PackedScene" uid="uid://fodxm0v5s6gy" path="res://player.tscn" id="1_jaq02"]
 [ext_resource type="PackedScene" uid="uid://celgfccesovw7" path="res://tree.tscn" id="2_y1j85"]
 [ext_resource type="PackedScene" uid="uid://deondmpipecw3" path="res://mob.tscn" id="3_fcxp3"]
 [ext_resource type="Script" path="res://WaveManager/wave_manager.gd" id="5_k8rdd"]
+[ext_resource type="Script" path="res://PowerupManager/powerup_manager.gd" id="6_nkm40"]
+[ext_resource type="Script" path="res://PowerupManager/first_aid.gd" id="7_xi406"]
 
 [sub_resource type="Curve2D" id="Curve2D_553bb"]
 _data = {
@@ -91,8 +93,16 @@ one_shot = true
 [node name="InterWaveTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="PowerupManager" type="Node" parent="."]
+script = ExtResource("6_nkm40")
+
+[node name="FirstAid" type="Node" parent="PowerupManager"]
+script = ExtResource("7_xi406")
+
 [connection signal="health_deplete" from="Player" to="." method="_on_player_health_deplete"]
+[connection signal="on_death" from="Mob" to="WaveManager" method="_on_mob_on_death"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="wave_ended" from="WaveManager" to="." method="_on_wave_ended"]
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="InterWaveTimer" to="." method="_wave_timeout_over"]
+[connection signal="first_aid_used" from="PowerupManager/FirstAid" to="Player" method="_on_first_aid_used"]

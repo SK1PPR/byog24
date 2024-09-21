@@ -27,6 +27,9 @@ var waves: Array[Wave]
 var cur_ind: int
 var enemyOrder: Array[Resource]
 var currentWaitTime: float
+
+# For keeping track of number of enemies killed to mark end of waves
+var enemiesDead: int
 		
 func _ready() -> void:
 	# Sorry Hardcode :(
@@ -59,15 +62,20 @@ func start_wave(waveNum: int):
 	cur_ind = 0
 	currentWaitTime = avgWaitTime
 	print(enemyOrder.size())
+	enemiesDead = 0
 	_on_timer_timeout()
 
 func _on_timer_timeout() -> void:
-	var newEnemy = enemyOrder[cur_ind].instantiate()
-	newEnemy.global_position = get_random_spawn_cords()
-	get_parent().add_child(newEnemy)
-	cur_ind += 1
-	if cur_ind >= enemyOrder.size():
-		emit_signal("wave_ended")
-	else:
+	if cur_ind < enemyOrder.size():
+		var newEnemy = enemyOrder[cur_ind].instantiate()
+		newEnemy.global_position = get_random_spawn_cords()
+		get_parent().add_child(newEnemy)
 		timer.wait_time = get_random_wait_time(currentWaitTime)
 		timer.start()
+		cur_ind += 1
+		
+func _on_mob_death() -> void:
+	enemiesDead += 1
+	if enemiesDead >= enemyOrder.size():
+		enemiesDead = 0
+		emit_signal("wave_ended")

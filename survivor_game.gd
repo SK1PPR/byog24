@@ -23,7 +23,9 @@ func _on_player_health_deplete():
 
 
 func _on_wave_ended() -> void:
+	print("Wave Ended")
 	current_wave += 1
+	$PowerupManager/FirstAid.execute()
 	$InterWaveTimer.wait_time = WAVE_GAP
 	$InterWaveTimer.start()
 		

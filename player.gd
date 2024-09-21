@@ -22,3 +22,7 @@ func _physics_process(delta):
 		if health <= 0.0:
 			health_deplete.emit()
 			
+
+
+func _on_first_aid_used(inc: int) -> void:
+	health += inc

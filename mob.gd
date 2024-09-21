@@ -3,9 +3,11 @@ extends CharacterBody2D
 var health = 3
 
 @onready var player = get_node("/root/Game/Player")
+signal on_death()
 
 func _ready():
 	$Slime.play_walk()
+	connect("on_death", $"../WaveManager"._on_mob_death)
 
 func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
@@ -16,6 +18,7 @@ func take_damage():
 	health -= 1
 	$Slime.play_hurt()
 	if health == 0:
+		emit_signal("on_death")
 		queue_free()
 		
 		const SMOKE = preload("res://smoke_explosion/smoke_explosion.tscn")

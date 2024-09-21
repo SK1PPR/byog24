@@ -1,4 +1,5 @@
-res://survivor_game.gd
 res://survivor_game.tscn
-res://WaveManager/wave_manager.gd
 res://mob.tscn
+res://WaveManager/wave_manager.gd
+res://mob.gd
+res://survivor_game.gd
