@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfdkfrepu5eia"]
+
+[ext_resource type="Script" path="res://scripts/blood.gd" id="1_52t0h"]
+[ext_resource type="Shader" path="res://shaders/blood.gdshader" id="1_pkl7h"]
+[ext_resource type="Texture2D" uid="uid://cs7drqxvpklk1" path="res://assets/BLOOD.png" id="3_ymfhk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xinpp"]
+shader = ExtResource("1_pkl7h")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4l8q"]
+
+[node name="blood" type="Area2D"]
+position = Vector2(1, 1)
+script = ExtResource("1_52t0h")
+
+[node name="blood" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_xinpp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s4l8q")
+disabled = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.56
+texture = ExtResource("3_ymfhk")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 200.0
+linear_accel_min = -290.0
+linear_accel_max = -290.0
+damping_max = 100.0
+scale_amount_min = 0.4
+scale_amount_max = 0.4
