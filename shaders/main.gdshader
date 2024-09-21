@@ -43,26 +43,26 @@ float perlin_noise(vec2 x) {
 
 vec2 curl_noise(vec2 uv) {
     vec2 eps = vec2(0.0, 1.0);
-    
+
     float n1, n2, a, b;
     n1 = perlin_noise(uv + eps);
     n2 = perlin_noise(uv - eps);
     a = (n1 - n2) / (2.0 * eps.y);
-    
+
     n1 = perlin_noise(uv + eps.yx);
     n2 = perlin_noise(uv - eps.yx);
     b = (n1 - n2) / (2.0 * eps.y);
-    
+
     return vec2(a, -b);
 }
 
 float worley_noise(vec2 uv, float freq, float t, bool curl) {
     uv *= freq;
     uv += t + (curl ? curl_noise(uv * 2.0) : vec2(0.0));
-    
+
     vec2 id = floor(uv);
     vec2 gv = fract(uv);
-    
+
     float min_dist = 100.0;
     for (float y = -1.0; y <= 1.0; ++y) {
         for (float x = -1.0; x <= 1.0; ++x) {
@@ -73,7 +73,7 @@ float worley_noise(vec2 uv, float freq, float t, bool curl) {
             min_dist = min(min_dist, dot(d, d));
         }
     }
-    
+
     return min_dist;
 }
 
@@ -98,7 +98,7 @@ vec4 worley_fbm(vec2 uv, float freq, float t, bool curl) {
     float worley2 = 1.0 - worley_noise(uv, freq * 4.0, t * 4.0, curl);
     float worley3 = 1.0 - worley_noise(uv, freq * 8.0, t * 8.0, curl);
     float worley4 = 1.0 - worley_noise(uv, freq * 16.0, t * 16.0, curl);
-    
+
     float fbm0 = (freq > 4.0 ? 0.0 : worley0 * 0.625 + worley1 * 0.25 + worley2 * 0.125);
     float fbm1 = worley1 * 0.625 + worley2 * 0.25 + worley3 * 0.125;
     float fbm2 = worley2 * 0.625 + worley3 * 0.25 + worley4 * 0.125;
@@ -127,15 +127,15 @@ float clouds(vec2 uv, float t) {
 void fragment() {
     vec2 uv = FRAGCOORD.xy / resolution.y;
     float t = mod(TIME + 600.0, 7200.0) * 0.03;
-    
-    
+
+
     vec2 shadow_offset = light_direction * (cloud_height / resolution.y);
     vec2 shadow_uv = uv + shadow_offset;
-   
+
     float shadow_density = clouds(shadow_uv, t);
-   
+
     vec3 ground_color = vec3(0.2, 0.1, 0.1); // Sandy ground color
     vec3 shadow_color = ground_color * (1.0 - shadow_density * shadow_strength);
-    
+
     COLOR = vec4(shadow_color, 1.0);
 }
