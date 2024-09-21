@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2jg56y1u5tmf"]
+[gd_scene load_steps=16 format=3 uid="uid://b2jg56y1u5tmf"]
 
 [ext_resource type="Script" path="res://survivor_game.gd" id="1_5e3k3"]
 [ext_resource type="PackedScene" uid="uid://fodxm0v5s6gy" path="res://player.tscn" id="1_jaq02"]
@@ -10,6 +10,9 @@
 [ext_resource type="Script" path="res://PowerupManager/first_aid.gd" id="7_xi406"]
 [ext_resource type="Script" path="res://PowerupManager/shield.gd" id="9_25wkp"]
 [ext_resource type="Script" path="res://PowerupManager/poison_aura.gd" id="10_bse3l"]
+[ext_resource type="PackedScene" uid="uid://dkx33oml8p7wp" path="res://card_box.tscn" id="11_2bcwy"]
+[ext_resource type="Script" path="res://Cards/card_select_menu.gd" id="11_d12ke"]
+[ext_resource type="Script" path="res://wave_spawn_text.gd" id="13_4it74"]
 
 [sub_resource type="Curve2D" id="Curve2D_553bb"]
 _data = {
@@ -62,8 +65,6 @@ position = Vector2(392, 903)
 [node name="Tree3" parent="." instance=ExtResource("2_y1j85")]
 position = Vector2(991, 560)
 
-[node name="Mob" parent="." instance=ExtResource("3_fcxp3")]
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 autostart = true
@@ -98,7 +99,7 @@ text = "Game Over"
 
 [node name="WaveManager" type="Node" parent="."]
 script = ExtResource("5_k8rdd")
-innerRadius = 50.0
+innerRadius = 200.0
 outerRadius = 500.0
 enemies = Array[Resource]([ExtResource("3_fcxp3"), ExtResource("3_fcxp3"), ExtResource("3_fcxp3"), ExtResource("3_fcxp3")])
 
@@ -120,12 +121,56 @@ script = ExtResource("9_25wkp")
 [node name="PoisonAura" type="Node" parent="PowerupManager"]
 script = ExtResource("10_bse3l")
 
+[node name="CardSelect" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("11_d12ke")
+
+[node name="ColorRect" type="ColorRect" parent="CardSelect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.470588)
+
+[node name="Node2D" parent="CardSelect/ColorRect" instance=ExtResource("11_2bcwy")]
+z_index = 100
+position = Vector2(118, 217)
+scale = Vector2(2, 2)
+
+[node name="Button" type="Button" parent="CardSelect"]
+offset_left = 1591.0
+offset_top = 930.0
+offset_right = 1837.0
+offset_bottom = 1018.0
+theme_override_font_sizes/font_size = 45
+text = "Continue"
+
+[node name="WaveSpawnText" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("13_4it74")
+
+[node name="Label" type="Label" parent="WaveSpawnText"]
+offset_left = 645.0
+offset_top = 390.0
+offset_right = 1330.0
+offset_bottom = 698.0
+theme_override_font_sizes/font_size = 100
+text = "Wave 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="health_deplete" from="Player" to="." method="_on_player_health_deplete"]
-[connection signal="on_death" from="Mob" to="WaveManager" method="_on_mob_on_death"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="wave_ended" from="WaveManager" to="." method="_on_wave_ended"]
+[connection signal="wave_ended" from="WaveManager" to="CardSelect" method="_on_wave_manager_wave_ended"]
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="InterWaveTimer" to="." method="_wave_timeout_over"]
 [connection signal="first_aid_used" from="PowerupManager/FirstAid" to="Player" method="_on_first_aid_used"]
 [connection signal="shield_used" from="PowerupManager/Shield" to="Player" method="_on_shield_shield_used"]
 [connection signal="poison_aura_used" from="PowerupManager/PoisonAura" to="Player/PowerupRange" method="_on_poison_aura_used"]
+[connection signal="card_selected" from="CardSelect" to="." method="_on_card_selected"]
+[connection signal="pressed" from="CardSelect/Button" to="CardSelect" method="_on_continue_button_pressed"]
+[connection signal="visibility_changed" from="WaveSpawnText" to="WaveSpawnText" method="on_visiblilty_change"]

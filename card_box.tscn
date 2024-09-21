@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkx33oml8p7wp"]
+
+[ext_resource type="Script" path="res://Cards/card_select.gd" id="1_67x14"]
+[ext_resource type="PackedScene" uid="uid://feabo1fg7jve" path="res://Card.tscn" id="1_cgoho"]
+
+[node name="Card_Box" type="Node2D"]
+script = ExtResource("1_67x14")
+
+[node name="Card" parent="." instance=ExtResource("1_cgoho")]
+z_index = 100
+
+[node name="Card2" parent="." instance=ExtResource("1_cgoho")]
+z_index = 100
+offset_left = 586.0
+offset_top = -1.0
+offset_right = 836.0
+offset_bottom = 349.0
+uid = 2
+
+[node name="Card3" parent="." instance=ExtResource("1_cgoho")]
+z_index = 100
+offset_left = 300.0
+offset_top = -1.0
+offset_right = 550.0
+offset_bottom = 349.0
+uid = 1
+
+[connection signal="card_pressed" from="Card" to="." method="_card_clicked"]
+[connection signal="card_pressed" from="Card2" to="." method="_card_clicked"]
+[connection signal="card_pressed" from="Card3" to="." method="_card_clicked"]

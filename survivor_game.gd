@@ -11,9 +11,17 @@ extends Node2D
 	#spawn_mob()
 	
 var current_wave: int = 0
-const WAVE_GAP: int = 15
+const WAVE_GAP: int = 8
 	
 func _ready() -> void:
+	$WaveSpawnText.visible = true
+	var timer: Timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = WAVE_GAP
+	timer.one_shot = true
+	timer.start() 
+	await timer.timeout
+	timer.queue_free()
 	$WaveManager.start_wave(current_wave)
 
 
@@ -21,10 +29,16 @@ func _on_player_health_deplete():
 	%GameOverScreen.visible = true
 	get_tree().paused = true
 
-
 func _on_wave_ended() -> void:
-	print("Wave Ended")
+	%CardSelect.visible = true
+
+
+func _on_card_selected(uid: int) -> void:
+	print("Powerup ", uid, " was selected")
+	print("Spawning new wave")
 	current_wave += 1
+	$WaveSpawnText/Label.text = "Wave " + str(current_wave + 1)
+	$WaveSpawnText.visible = true
 	$InterWaveTimer.wait_time = WAVE_GAP
 	$InterWaveTimer.start()
 		

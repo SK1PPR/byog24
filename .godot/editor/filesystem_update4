@@ -1,6 +1,13 @@
-res://PowerupManager/PowerupRange.gd
+res://Card.tscn
+res://Cards/card_set.gd
 res://survivor_game.tscn
-res://mob.gd
-res://PowerupManager/poison_aura.gd
 res://mob.tscn
+res://card_box.tscn
+res://Cards/card_select.gd
 res://survivor_game.gd
+res://Cards/card_click.gd
+res://Cards/is_inside.gd
+res://Cards/card_manager.gd
+res://Cards/card_select_menu.gd
+res://PowerupManager/powerup_manager.gd
+res://wave_spawn_text.gd
