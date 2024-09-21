@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyrrnfgre5yut"]
+
+[ext_resource type="Script" path="res://mob4.gd" id="1_baecc"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="2_crc51"]
+[ext_resource type="PackedScene" uid="uid://c3t4pyh0qgwhc" path="res://gun.tscn" id="3_iokqt"]
+[ext_resource type="Script" path="res://gun1.gd" id="4_m3n6y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7vsyw"]
+radius = 46.0435
+
+[node name="Mob" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_baecc")
+
+[node name="Slime" parent="." instance=ExtResource("2_crc51")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -29)
+shape = SubResource("CircleShape2D_7vsyw")
+
+[node name="Gun" parent="." instance=ExtResource("3_iokqt")]
+position = Vector2(1, -30)
+script = ExtResource("4_m3n6y")

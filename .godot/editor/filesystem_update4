@@ -1,10 +1,12 @@
 res://survivor_game.tscn
 res://clouds.gdshader
-res://mob.gd
+res://mob3.gd
 res://survivor_game.gd
 res://mob2.tscn
-res://mob2.gd
 res://mob1.tscn
-res://mob1.gd
 res://player.tscn
 res://mob3.tscn
+res://mob4.tscn
+res://gun.gd
+res://mob4.gd
+res://gun1.gd

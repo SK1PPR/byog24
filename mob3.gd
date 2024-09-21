@@ -4,33 +4,23 @@ var health = 3
 
 @onready var player = get_node("/root/Game/Player")
 
-var rng = RandomNumberGenerator.new()
+var time_elapsed = 0.0 
 
 func _ready():
 	$Slime.play_walk()
 
-func type0movement(direction):
-	return direction* 300.0
+func type0movement(direction, delta):
+	var zigzag_amplitude = 200.0
+	var zigzag_frequency = 20.0
+	var zigzag_offset = sin(time_elapsed * zigzag_frequency) * zigzag_amplitude
 
-func type1movement(direction):
-	direction[1] = direction[1]*5000.0
-	direction[0] = direction[0]*10000.0
-	return direction
+	direction.x += zigzag_offset * delta
+	return direction * 600.0
 
-func type2movement(direction):
-	direction[1] = direction[1]*10000.0
-	direction[0] = direction[0]*5000.0
-	return direction
-
-func _physics_process(_delta):
+func _physics_process(delta):
+	time_elapsed += delta
 	var direction = global_position.direction_to(player.global_position)
-	var enemy_type = rng.randi_range(0, 50)
-	if enemy_type == 1:
-		velocity = type1movement(direction)
-	elif enemy_type == 2:
-		velocity = type2movement(direction)
-	else: 
-		velocity = type0movement(direction)
+	velocity = type0movement(direction, delta)
 	move_and_slide()
 
 func take_damage():
@@ -43,4 +33,3 @@ func take_damage():
 		var smoke = SMOKE.instantiate()
 		get_parent().add_child(smoke)
 		smoke.global_position = global_position
-		
