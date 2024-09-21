@@ -1,17 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3t4pyh0qgwhc"]
+[gd_scene load_steps=6 format=3 uid="uid://c3t4pyh0qgwhc"]
 
-[ext_resource type="Script" path="res://gun.gd" id="1_j0dx3"]
+[ext_resource type="Script" path="res://data/weapons/weapon.gd" id="1_diw04"]
 [ext_resource type="Texture2D" uid="uid://cswb5do8rrj7q" path="res://pistol/pistol.png" id="1_p4mh2"]
+[ext_resource type="Resource" uid="uid://hjp8p03587nk" path="res://data/weapons/pistol.tres" id="2_7pgge"]
+[ext_resource type="PackedScene" uid="uid://g7bavbt7fx8x" path="res://bullet.tscn" id="3_uwhwi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jd4kn"]
 radius = 307.417
 
-[node name="Gun" type="Area2D"]
+[node name="Gun" type="Area2D" node_paths=PackedStringArray("range_area")]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_j0dx3")
+script = ExtResource("1_diw04")
+weapons_stats = ExtResource("2_7pgge")
+bullet = ExtResource("3_uwhwi")
+fired_bullets = 2
+fire_point_nodes = Array[NodePath]([NodePath("WeaponPivot/Pistol/ShootingPoint"), NodePath("WeaponPivot/Pistol/ShootingPoint2")])
+range_area = NodePath("Range")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Range" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jd4kn")
 
 [node name="WeaponPivot" type="Marker2D" parent="."]
@@ -21,11 +28,7 @@ position = Vector2(63, -9)
 texture = ExtResource("1_p4mh2")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Pistol"]
-unique_name_in_owner = true
-position = Vector2(26, -10)
+position = Vector2(41, -39)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="ShootingPoint2" type="Marker2D" parent="WeaponPivot/Pistol"]
+position = Vector2(41, 13)

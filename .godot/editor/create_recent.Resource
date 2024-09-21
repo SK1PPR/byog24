@@ -1,0 +1,2 @@
+WeaponStats
+Resource

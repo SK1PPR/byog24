@@ -1,3 +1,4 @@
+Marker2D
 Label
 ColorRect
 CanvasLayer
@@ -8,7 +9,6 @@ ProgressBar
 CollisionShape2D
 Area2D
 Sprite2D
-Marker2D
 Camera2D
 CharacterBody2D
 StaticBody2D

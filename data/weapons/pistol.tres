@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://hjp8p03587nk"]
+
+[ext_resource type="Script" path="res://data/weapons/weapon_stats.gd" id="1_0jrvp"]
+
+[resource]
+script = ExtResource("1_0jrvp")
+name = "Bullet"
+bullet_speed = 300.0
+damage = 1
+fire_rate = 1.0
+range = 350.0
