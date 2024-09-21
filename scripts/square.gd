@@ -45,7 +45,7 @@ func _physics_process(_delta):
 func take_damage(damage: float = 1):
 	health -= damage
 	#$Slime.play_hurt()
-	if health == 0:
+	if health <= 0:
 		emit_signal("on_death")
 		queue_free()
 func get_separation_vector() -> Vector2:
