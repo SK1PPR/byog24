@@ -42,12 +42,21 @@ func _physics_process(_delta):
 	velocity += get_separation_vector() * 100.0  # Increase to adjust the repelling force
 	move_and_collide(velocity*_delta)
 
-func take_damage(damage: float = 1):
-	health -= damage
+func take_damage():
+	health -= 1
 	#$Slime.play_hurt()
-	if health <= 0:
+	if health == 0:
+		add_particle_simulation()
 		emit_signal("on_death")
 		queue_free()
+		
+func add_particle_simulation():
+	var particle_scene = load("res://scenes/blood.tscn")
+	for i in range(30):
+		var particle_instance = particle_scene.instantiate()
+		get_parent().add_child(particle_instance)
+		particle_instance.global_position = global_position
+
 func get_separation_vector() -> Vector2:
 	var separation = Vector2.ZERO
 	if parent_node.get_children().size() != 0:

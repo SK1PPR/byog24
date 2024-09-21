@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfdkfrepu5eia"]
+[gd_scene load_steps=6 format=3 uid="uid://bo8r7d308ex0x"]
 
 [ext_resource type="Script" path="res://scripts/blood.gd" id="1_52t0h"]
 [ext_resource type="Shader" path="res://shaders/blood.gdshader" id="1_pkl7h"]
