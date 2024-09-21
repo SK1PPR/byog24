@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=22 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://frhhprjg8xrl" path="res://scenes/triangle.tscn" id="4_06rle"]
 [ext_resource type="PackedScene" uid="uid://gy88wl32c56y" path="res://scenes/square.tscn" id="5_nksia"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="6_qxm8f"]
+[ext_resource type="PackedScene" uid="uid://b6s0vfev5tf8l" path="res://scenes/pentagon.tscn" id="7_ix11m"]
+[ext_resource type="PackedScene" uid="uid://dh7t78g2mn2s6" path="res://data/weapons/assault_rifle.tscn" id="9_1xvox"]
+[ext_resource type="PackedScene" uid="uid://bxnaw4pdyf808" path="res://data/weapons/machine_gun.tscn" id="9_rjlbj"]
+[ext_resource type="PackedScene" uid="uid://eqagoykh5r0q" path="res://data/weapons/sniper.tscn" id="10_0ajwb"]
+[ext_resource type="PackedScene" uid="uid://d0dic2gjfpwdq" path="res://data/weapons/handgun.tscn" id="11_o4d2n"]
+[ext_resource type="PackedScene" uid="uid://c2jso6b04bh2i" path="res://data/weapons/shotgun.tscn" id="14_kdi8e"]
+[ext_resource type="PackedScene" uid="uid://j4wfweum8nor" path="res://data/weapons/revolver.tscn" id="15_ibyf6"]
 
 [sub_resource type="Shader" id="Shader_mlybf"]
 code = "// https://www.shadertoy.com/view/MdffD7
@@ -161,10 +168,9 @@ offset_top = -3322.0
 offset_right = -4082.0
 offset_bottom = -3282.0
 scale = Vector2(223.948, 171.64)
-color = Color(0.120162, 0.138078, 0.245451, 1)
+color = Color(0.547389, 0.247493, 0.321294, 1)
 
 [node name="ColorRect" type="ColorRect" parent="background"]
-visible = false
 material = SubResource("ShaderMaterial_3jex4")
 layout_mode = 0
 offset_left = -9.77906
@@ -172,21 +178,15 @@ offset_top = 41.6103
 offset_right = 30.2209
 offset_bottom = 81.6104
 scale = Vector2(553.711, -189.327)
-color = Color(0.137968, 0.378297, 0.387314, 1)
-
-[node name="player" parent="." instance=ExtResource("1_j7f5f")]
-position = Vector2(-505, 323)
-
-[node name="pistol" parent="player" instance=ExtResource("3_ttt1o")]
-position = Vector2(3, -31)
+color = Color(0.602408, 0, 0.0998547, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_6qcvf")
 playe_path = NodePath("../player")
 
 [node name="Boundary" type="StaticBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 65535
 
 [node name="right" type="CollisionShape2D" parent="Boundary"]
 position = Vector2(2450, 0)
@@ -226,9 +226,9 @@ occluder = SubResource("OccluderPolygon2D_pxi2j")
 [node name="WaveManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_qxm8f")
-innerRadius = 1000.0
-outerRadius = 5000.0
-enemies = Array[Resource]([ExtResource("4_06rle"), ExtResource("5_nksia"), ExtResource("4_06rle"), ExtResource("4_06rle")])
+innerRadius = 500.0
+outerRadius = 1000.0
+enemies = Array[Resource]([ExtResource("4_06rle"), ExtResource("5_nksia"), ExtResource("7_ix11m"), ExtResource("4_06rle")])
 
 [node name="Timer" type="Timer" parent="WaveManager"]
 one_shot = true
@@ -237,6 +237,30 @@ one_shot = true
 one_shot = true
 
 [node name="Node" type="Node" parent="."]
+
+[node name="player" parent="." instance=ExtResource("1_j7f5f")]
+position = Vector2(-505, 323)
+
+[node name="machine_gun" parent="player" instance=ExtResource("9_rjlbj")]
+position = Vector2(78, 5)
+
+[node name="sniper" parent="player" instance=ExtResource("10_0ajwb")]
+position = Vector2(74, 85)
+
+[node name="assault_rifle" parent="player" instance=ExtResource("9_1xvox")]
+position = Vector2(-86, -63)
+
+[node name="pistol" parent="player" instance=ExtResource("3_ttt1o")]
+position = Vector2(-83, -2)
+
+[node name="handgun" parent="player" instance=ExtResource("11_o4d2n")]
+position = Vector2(79, -65)
+
+[node name="shotgun" parent="player" instance=ExtResource("14_kdi8e")]
+position = Vector2(-86, 81)
+
+[node name="revolver" parent="player" instance=ExtResource("15_ibyf6")]
+position = Vector2(42, -122)
 
 [connection signal="wave_ended" from="WaveManager" to="." method="_on_wave_ended"]
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]

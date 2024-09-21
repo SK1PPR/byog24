@@ -3,12 +3,22 @@ extends CharacterBody2D
 var health = 3
 var separation_distance = 100.0  # Minimum distance to maintain between enemies
 
+var time_elapsed = 0.0 
+
 signal on_death()
 @onready var player = get_node("/root/main/player")
 @onready var waveman = get_node("/root/main/WaveManager")
 @onready var parent_node  # This will reference the parent node containing all enemies (other instances of this scene)
 var timer
 
+func type0movement(direction, delta):
+	var zigzag_amplitude = 200.0
+	var zigzag_frequency = 20.0
+	var zigzag_offset = sin(time_elapsed * zigzag_frequency) * zigzag_amplitude
+
+	direction.x += zigzag_offset * delta
+	return direction * 600.0
+	
 func _ready():
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "stop_moving"))
@@ -18,12 +28,9 @@ func _ready():
 	parent_node = get_parent()
 
 func _physics_process(_delta):
+	time_elapsed += _delta
 	var direction = global_position.direction_to(player.global_position)
-	var velocity = direction * 400.0
-	
-	# Adjust velocity to avoid nearby enemies
-	velocity += get_separation_vector() * 100.0  # Increase to adjust the repelling force
-	
+	velocity = type0movement(direction, _delta)
 	move_and_collide(velocity * _delta)
 
 # Calculate the separation vector based on other CharacterBody2D instances (enemies)

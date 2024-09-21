@@ -21,7 +21,6 @@ func _ready():
 	add_child(timer)
 	timer.connect("timeout", Callable(self, "_fire_timer_out"))
 	timer.start(weapons_stats.fire_rate)
-	
 	for path in fire_point_nodes :
 		var fire_point = get_node(path)
 		fire_points.append(fire_point)
@@ -41,8 +40,10 @@ func _physics_process(_delta):
 			fire()
 	if global_rotation_degrees < -90 or global_rotation_degrees > 90:
 		%Gun.flip_v = true
+		#%Gun2.flip_v = true
 	else:
 		%Gun.flip_v = false
+		#%Gun2.flip_v = false
 			
 func fire():
 	for fire_point in fire_points:

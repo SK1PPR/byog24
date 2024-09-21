@@ -11,7 +11,7 @@ extends Node2D
 	#spawn_mob()
 	
 var current_wave: int = 0
-const WAVE_GAP: int = 15
+const WAVE_GAP: int = 7
 	
 func _ready() -> void:
 	$WaveManager.start_wave(current_wave)

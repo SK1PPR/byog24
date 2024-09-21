@@ -19,3 +19,15 @@ res://scripts/triangle.gd
 res://scripts/square.gd
 res://scripts/wave_manager.gd
 res://scripts/main.gd
+res://data/weapons/weapon_stats.gd
+res://data/weapons/assault_rifle.tscn
+res://scenes/game_over.tscn
+res://scripts/game_over_restart_button.gd
+res://scenes/pentagon.tscn
+res://scripts/pentagon.gd
+res://data/weapons/assault_rifle.tres
+res://data/weapons/handgun.tscn
+res://data/weapons/machine_gun.tscn
+res://data/weapons/revolver.tscn
+res://data/weapons/sniper.tscn
+res://data/weapons/shotgun.tscn

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1232bb68fhy6"]
+[gd_scene load_steps=12 format=3 uid="uid://c1232bb68fhy6"]
 
 [ext_resource type="Texture2D" uid="uid://cldwk3rcvt8hh" path="res://assets/player_new.png" id="2_8yosa"]
 [ext_resource type="Texture2D" uid="uid://b4utmi0oj1lxd" path="res://assets/shadow.png" id="2_pc3o8"]
@@ -42,7 +42,7 @@ script/source = "extends CharacterBody2D
 signal health_deplete
 
 var health = 100.0
-const DAMAGE_RATE = 5.0
+const DAMAGE_RATE = 20.0
 
 
 var tilt_angle = 0.0
@@ -53,9 +53,10 @@ func _ready():
 	initial_rect_position = sprite.position
 
 func _physics_process(delta):
+	%ProgressBar.value = health
 	var direction = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
 	velocity = handle_move(direction, delta)
-	move_and_slide()
+	move_and_collide(velocity*delta)
 	
 	if velocity.x < 0: 
 		$Sprite2D.flip_h = true
@@ -84,11 +85,11 @@ func _physics_process(delta):
 	else:
 		sprite.position = initial_rect_position
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
-	if overlapping_mobs.size() > 0:
-		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
-		%ProgressBar.value = health
+	if overlapping_mobs.size() > 1:
+		health -= (DAMAGE_RATE * overlapping_mobs.size() * delta)*0.1
 		if health <= 0.0:
 			health_deplete.emit()
+			get_tree().change_scene_to_file(\"res://scenes/game_over.tscn\")
 
 func _process(delta):
 	# Smooth color change based on movement
@@ -125,6 +126,12 @@ func velocity_decel(delta: float) -> Vector2:
 	return velocity.normalized() * speed_new * MAX_SPEED
 "
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bs8r"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkw4s"]
+bg_color = Color(0.282968, 0.697788, 0.401912, 1)
+
 [sub_resource type="Gradient" id="Gradient_dg3yn"]
 offsets = PackedFloat32Array(0, 0.441704, 0.847534, 1)
 colors = PackedColorArray(0.179995, 0.181356, 0.123274, 1, 0.975336, 0.975336, 0.975336, 1, 0.976644, 0.976644, 0.976644, 1, 1, 1, 1, 1)
@@ -133,19 +140,12 @@ colors = PackedColorArray(0.179995, 0.181356, 0.123274, 1, 0.975336, 0.975336, 0
 size = Vector2(72, 129)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4s222"]
-radius = 44.0
-height = 166.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6roua"]
-bg_color = Color(0, 0.712908, 0.44304, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+radius = 32.0055
+height = 127.953
 
 [node name="player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_der1l")
-collision_mask = 2
+collision_mask = 4
 motion_mode = 1
 wall_min_slide_angle = 0.441568
 script = SubResource("GDScript_dy3ap")
@@ -155,6 +155,21 @@ modulate = Color(0.408329, 0.408329, 0.408329, 1)
 self_modulate = Color(0.340339, 0.340339, 0.340339, 1)
 position = Vector2(-4, 68)
 texture = ExtResource("2_pc3o8")
+
+[node name="ProgressBar" type="ProgressBar" parent="shadow"]
+unique_name_in_owner = true
+light_mask = 7
+visibility_layer = 3
+offset_left = -66.0
+offset_top = 52.0
+offset_right = -62.0
+offset_bottom = 79.0
+scale = Vector2(35.8032, 0.800667)
+theme_override_styles/background = SubResource("StyleBoxFlat_6bs8r")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wkw4s")
+value = 100.0
+rounded = true
+show_percentage = false
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(2, -48)
@@ -189,17 +204,8 @@ texture_scale = 3.42
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
+scale = Vector2(-1.87468, -1.56307)
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_4s222")
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
-offset_left = -2.0
-offset_top = 92.0
-offset_right = 2.0
-offset_bottom = 119.0
-theme_override_styles/background = SubResource("StyleBoxFlat_6roua")
-value = 100.0
-rounded = true
-show_percentage = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7nftdmmd7bqa"
-path="res://.godot/imported/Assault RIfle.png-a04b944c1212392ed6f5e0892164ca37.ctex"
+uid="uid://300wns70xk7p"
+path="res://.godot/imported/sniper.png-9513c77050432d84c8b0bea1bba766dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Assault RIfle.png"
-dest_files=["res://.godot/imported/Assault RIfle.png-a04b944c1212392ed6f5e0892164ca37.ctex"]
+source_file="res://assets/sniper.png"
+dest_files=["res://.godot/imported/sniper.png-9513c77050432d84c8b0bea1bba766dd.ctex"]
 
 [params]
 

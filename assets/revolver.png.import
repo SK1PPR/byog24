@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0egde84bj0vq"
-path="res://.godot/imported/Machine Gun.png-f9df2cf2b8d38c080c6f7fddaf024bff.ctex"
+uid="uid://db6dlyhlnylml"
+path="res://.godot/imported/revolver.png-787f81594d48939ce25b1d72d5656ad8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Machine Gun.png"
-dest_files=["res://.godot/imported/Machine Gun.png-f9df2cf2b8d38c080c6f7fddaf024bff.ctex"]
+source_file="res://assets/revolver.png"
+dest_files=["res://.godot/imported/revolver.png-787f81594d48939ce25b1d72d5656ad8.ctex"]
 
 [params]
 

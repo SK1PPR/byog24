@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://data/weapons/weapon.gd" id="1_23ule"]
 [ext_resource type="Resource" uid="uid://hjp8p03587nk" path="res://data/weapons/pistol.tres" id="2_op4kq"]
-[ext_resource type="Texture2D" uid="uid://cym4gs6hhrdbi" path="res://assets/Pistol.png" id="3_kiadl"]
 [ext_resource type="PackedScene" uid="uid://bbx6xtbc5y65b" path="res://data/weapons/bullet.tscn" id="3_kntxy"]
+[ext_resource type="Texture2D" uid="uid://w5ceuloskppr" path="res://assets/pistol.png" id="4_lhf5j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7pm3c"]
 
@@ -24,9 +24,10 @@ shape = SubResource("CircleShape2D_7pm3c")
 
 [node name="Gun" type="Sprite2D" parent="pivot"]
 unique_name_in_owner = true
-position = Vector2(24, -22)
-scale = Vector2(2.74981, 2.9966)
-texture = ExtResource("3_kiadl")
+light_mask = 4
+position = Vector2(60.135, -6.9966)
+scale = Vector2(8.71605, 9.4983)
+texture = ExtResource("4_lhf5j")
 
 [node name="shooting_point" type="Marker2D" parent="pivot"]
-position = Vector2(47, -26)
+position = Vector2(95, -16)

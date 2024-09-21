@@ -134,7 +134,7 @@ void fragment() {
    
     float shadow_density = clouds(shadow_uv, t);
    
-    vec3 ground_color = vec3(0, 0.3, 0.8); // Sandy ground color
+    vec3 ground_color = vec3(0.2, 0.1, 0.1); // Sandy ground color
     vec3 shadow_color = ground_color * (1.0 - shadow_density * shadow_strength);
     
     COLOR = vec4(shadow_color, 1.0);
