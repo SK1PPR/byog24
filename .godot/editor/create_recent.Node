@@ -1,4 +1,8 @@
+MarginContainer
+Sprite2D
 Node
+CollisionShape2D
+Area2D
 Timer
 Label
 ColorRect
@@ -6,9 +10,6 @@ CanvasLayer
 PathFollow2D
 Path2D
 ProgressBar
-CollisionShape2D
-Area2D
-Sprite2D
 Marker2D
 Camera2D
 CharacterBody2D

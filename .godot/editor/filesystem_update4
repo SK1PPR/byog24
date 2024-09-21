@@ -1,5 +1,6 @@
+res://PowerupManager/PowerupRange.gd
 res://survivor_game.tscn
-res://mob.tscn
-res://WaveManager/wave_manager.gd
 res://mob.gd
+res://PowerupManager/poison_aura.gd
+res://mob.tscn
 res://survivor_game.gd

@@ -1,18 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2jg56y1u5tmf"]
+[gd_scene load_steps=13 format=3 uid="uid://b2jg56y1u5tmf"]
 
 [ext_resource type="Script" path="res://survivor_game.gd" id="1_5e3k3"]
 [ext_resource type="PackedScene" uid="uid://fodxm0v5s6gy" path="res://player.tscn" id="1_jaq02"]
 [ext_resource type="PackedScene" uid="uid://celgfccesovw7" path="res://tree.tscn" id="2_y1j85"]
 [ext_resource type="PackedScene" uid="uid://deondmpipecw3" path="res://mob.tscn" id="3_fcxp3"]
+[ext_resource type="Script" path="res://PowerupManager/PowerupRange.gd" id="3_rl7da"]
 [ext_resource type="Script" path="res://WaveManager/wave_manager.gd" id="5_k8rdd"]
 [ext_resource type="Script" path="res://PowerupManager/powerup_manager.gd" id="6_nkm40"]
 [ext_resource type="Script" path="res://PowerupManager/first_aid.gd" id="7_xi406"]
+[ext_resource type="Script" path="res://PowerupManager/shield.gd" id="9_25wkp"]
+[ext_resource type="Script" path="res://PowerupManager/poison_aura.gd" id="10_bse3l"]
 
 [sub_resource type="Curve2D" id="Curve2D_553bb"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -217, -121, 0, 0, 0, 0, 2111, -146, 0, 0, 0, 0, 2119, 1120, 0, 0, 0, 0, -222, 1120, 0, 0, 0, 0, -217, -136)
 }
 point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhi30"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -37,6 +42,16 @@ curve = SubResource("Curve2D_553bb")
 unique_name_in_owner = true
 position = Vector2(-217, -121)
 rotation = -0.0107384
+
+[node name="PowerupRange" type="Area2D" parent="Player"]
+collision_mask = 2
+script = ExtResource("3_rl7da")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PowerupRange"]
+position = Vector2(-13, -45)
+scale = Vector2(30, 30)
+shape = SubResource("CircleShape2D_jhi30")
+debug_color = Color(0.903292, 0.00014882, 0.753564, 0.42)
 
 [node name="Tree" parent="." instance=ExtResource("2_y1j85")]
 position = Vector2(221, 329)
@@ -99,6 +114,12 @@ script = ExtResource("6_nkm40")
 [node name="FirstAid" type="Node" parent="PowerupManager"]
 script = ExtResource("7_xi406")
 
+[node name="Shield" type="Node" parent="PowerupManager"]
+script = ExtResource("9_25wkp")
+
+[node name="PoisonAura" type="Node" parent="PowerupManager"]
+script = ExtResource("10_bse3l")
+
 [connection signal="health_deplete" from="Player" to="." method="_on_player_health_deplete"]
 [connection signal="on_death" from="Mob" to="WaveManager" method="_on_mob_on_death"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
@@ -106,3 +127,5 @@ script = ExtResource("7_xi406")
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="InterWaveTimer" to="." method="_wave_timeout_over"]
 [connection signal="first_aid_used" from="PowerupManager/FirstAid" to="Player" method="_on_first_aid_used"]
+[connection signal="shield_used" from="PowerupManager/Shield" to="Player" method="_on_shield_shield_used"]
+[connection signal="poison_aura_used" from="PowerupManager/PoisonAura" to="Player/PowerupRange" method="_on_poison_aura_used"]
