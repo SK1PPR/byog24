@@ -38,10 +38,10 @@ func get_separation_vector() -> Vector2:
 				separation -= repelling_force  # Subtract to push away from other enemies
 	return separation
 
-func take_damage():
-	health -= 1
+func take_damage(damage: float = 1):
+	health -= damage
 	#$Slime.play_hurt()
-	if health == 0:
+	if health <= 0:
 		add_particle_simulation()
 		emit_signal("on_death")
 		queue_free()

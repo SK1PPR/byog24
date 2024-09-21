@@ -53,10 +53,10 @@ func add_particle_simulation():
 		particle_instance.global_position = global_position
 
 
-func take_damage():
-	health -= 1
+func take_damage(damage: float = 1):
+	health -= damage
 	#$Slime.play_hurt()
-	if health == 0:
-		add_particle_simulation()
+	if health <= 0:
+		add_particle_simulation()	
 		emit_signal("on_death")
 		queue_free()

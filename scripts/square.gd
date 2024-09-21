@@ -42,10 +42,10 @@ func _physics_process(_delta):
 	velocity += get_separation_vector() * 100.0  # Increase to adjust the repelling force
 	move_and_collide(velocity*_delta)
 
-func take_damage():
-	health -= 1
+func take_damage(damage: float = 1):
+	health -= damage
 	#$Slime.play_hurt()
-	if health == 0:
+	if health <= 0:
 		add_particle_simulation()
 		emit_signal("on_death")
 		queue_free()
