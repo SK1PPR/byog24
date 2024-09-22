@@ -1,18 +1,16 @@
 extends Node2D
-
-#func spawn_mob():
-	#var new_mob = preload("res://mob.tscn").instantiate()
-	#%PathFollow2D.progress_ratio = randf()
-	#new_mob.global_position = %PathFollow2D.global_position
-	#add_child(new_mob)
-#
-#
-#func _on_timer_timeout():
-	#spawn_mob()
 	
 var current_wave: int = 0
-const WAVE_GAP: int = 8
+@export var WAVE_GAP: int = 8
+@export var interval: float = 3.0
+@export var dialogue_interval: float = 1.5
+@export var dialogue_path: Array[NodePath]
+var j = 0
 	
+func _ready():
+	%DialogueLayerBeginning.visible = true
+	%DialogueLayerBeginning.print_dialogue()
+
 func _start_waves():
 	$WaveSpawnText.visible = true
 	var timer: Timer = Timer.new()
@@ -29,7 +27,20 @@ func _on_player_health_deplete():
 	get_tree().paused = true
 
 func _on_wave_ended() -> void:
-	%CardSelect.visible = true
+	var timer: Timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = interval
+	timer.one_shot = true
+	if current_wave % 2 != 0:
+		timer.wait_time = dialogue_interval
+	timer.start()
+	await timer.timeout
+	timer.queue_free()
+	if current_wave % 2 != 0:
+		%DialogueLayerBeginning.visible = true
+		%DialogueLayerBeginning.print_dialogue()
+	else:
+		%CardSelect.visible = true
 
 
 func _on_card_selected(uid: int) -> void:
@@ -49,5 +60,9 @@ func _wave_timeout_over() -> void:
 		print("Ended")
 
 
-func _on_dialogue_layer_dialogue_finished():
-	_start_waves()
+
+func _on_dialogue_layer_beginning_dialogue_finished():
+	if current_wave == 0:
+		_start_waves()
+	else:
+		%CardSelect.visible = true

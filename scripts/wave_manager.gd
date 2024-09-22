@@ -34,10 +34,13 @@ var enemiesDead: int
 func _ready() -> void:
 	# Sorry Hardcode :(
 	waves.append(Wave.new([15, 0, 0, 0], 1)) # Wave 1
-	waves.append(Wave.new([5, 5, 5, 5], 2)) # Wave 2
-	waves.append(Wave.new([10, 0, 0, 0], 3)) # Wave 3
-	waves.append(Wave.new([10, 0, 0, 0], 4)) # Wave 4
-	waves.append(Wave.new([10, 0, 0, 0], 5)) # Wave 5
+	waves.append(Wave.new([20, 5, 0, 0], 2)) # Wave 2
+	waves.append(Wave.new([30, 20, 0, 0], 3)) # Wave 3
+	waves.append(Wave.new([50, 25, 5, 0], 4)) # Wave 4
+	waves.append(Wave.new([60, 30, 10, 0], 5)) # Wave 5
+	waves.append(Wave.new([70, 35, 15, 2], 5)) # Wave 6
+	waves.append(Wave.new([80, 40, 20, 6], 5)) # Wave 7
+	waves.append(Wave.new([100, 50, 25, 10], 5)) # Wave 8
 	
 func get_random_wait_time(avgWaitTime: float) -> float:
 	return randf_range(0.7 * avgWaitTime, 1.3 * avgWaitTime)

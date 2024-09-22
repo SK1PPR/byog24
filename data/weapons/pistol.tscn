@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://byl3dfrhj11vx"]
+[gd_scene load_steps=7 format=3 uid="uid://byl3dfrhj11vx"]
 
 [ext_resource type="Script" path="res://data/weapons/weapon.gd" id="1_23ule"]
 [ext_resource type="Resource" uid="uid://hjp8p03587nk" path="res://data/weapons/pistol.tres" id="2_op4kq"]
 [ext_resource type="PackedScene" uid="uid://bbx6xtbc5y65b" path="res://data/weapons/bullet.tscn" id="3_kntxy"]
-[ext_resource type="Texture2D" uid="uid://w5ceuloskppr" path="res://assets/pistol.png" id="4_lhf5j"]
+[ext_resource type="Texture2D" uid="uid://w5ceuloskppr" path="res://assets/Pistol.png" id="4_lhf5j"]
+[ext_resource type="AudioStream" uid="uid://b5ecjc7ishgu5" path="res://sounds/pistol.mp3" id="5_nnbdn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7pm3c"]
 
@@ -31,3 +32,8 @@ texture = ExtResource("4_lhf5j")
 
 [node name="shooting_point" type="Marker2D" parent="pivot"]
 position = Vector2(95, -16)
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_nnbdn")
+volume_db = -7.0
+pitch_scale = 0.7

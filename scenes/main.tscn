@@ -1,24 +1,28 @@
-[gd_scene load_steps=46 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=63 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
 [ext_resource type="Shader" path="res://shaders/main.gdshader" id="1_vydfm"]
-[ext_resource type="PackedScene" uid="uid://2ltbutl066bk" path="res://scenes/candles.tscn" id="2_j8adm"]
-[ext_resource type="PackedScene" uid="uid://casjqsckyisre" path="res://scenes/candles_darker.tscn" id="3_004in"]
+[ext_resource type="PackedScene" path="res://scenes/candles.tscn" id="2_j8adm"]
+[ext_resource type="PackedScene" path="res://scenes/candles_darker.tscn" id="3_004in"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_6qcvf"]
 [ext_resource type="PackedScene" uid="uid://byl3dfrhj11vx" path="res://data/weapons/pistol.tscn" id="3_ttt1o"]
 [ext_resource type="PackedScene" uid="uid://frhhprjg8xrl" path="res://scenes/triangle.tscn" id="4_06rle"]
 [ext_resource type="PackedScene" uid="uid://gy88wl32c56y" path="res://scenes/square.tscn" id="5_nksia"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="6_qxm8f"]
 [ext_resource type="PackedScene" uid="uid://b6s0vfev5tf8l" path="res://scenes/pentagon.tscn" id="7_ix11m"]
+[ext_resource type="PackedScene" uid="uid://dh7t78g2mn2s6" path="res://data/weapons/assault_rifle.tscn" id="12_05t2x"]
+[ext_resource type="PackedScene" uid="uid://bxnaw4pdyf808" path="res://data/weapons/machine_gun.tscn" id="13_i5i3e"]
+[ext_resource type="PackedScene" uid="uid://c2jso6b04bh2i" path="res://data/weapons/shotgun.tscn" id="14_lmhwi"]
 [ext_resource type="Script" path="res://scripts/PowerupRange.gd" id="16_0oi6n"]
 [ext_resource type="Script" path="res://scripts/powerup_manager.gd" id="16_xl5kd"]
 [ext_resource type="Script" path="res://scripts/first_aid.gd" id="17_3jxuv"]
 [ext_resource type="Script" path="res://scripts/shield.gd" id="18_v7ry1"]
 [ext_resource type="Script" path="res://scripts/poison_aura.gd" id="19_0vmpu"]
-[ext_resource type="Script" path="res://scenes/dialogues.gd" id="19_2a6dy"]
+[ext_resource type="Script" path="res://data/conversations/dialogues.gd" id="19_2a6dy"]
 [ext_resource type="Script" path="res://scripts/card_select_menu.gd" id="20_8gvqi"]
-[ext_resource type="Script" path="res://scripts/comment.gd" id="20_458qt"]
+[ext_resource type="Script" path="res://data/conversations/comment.gd" id="20_458qt"]
+[ext_resource type="Script" path="res://data/conversations/conversation.gd" id="20_r71ib"]
 [ext_resource type="FontFile" uid="uid://dwfq544lcvb6w" path="res://fonts/JMH Typewriter-Black.otf" id="21_kpbg1"]
 [ext_resource type="PackedScene" uid="uid://dvkb7fkt3u40n" path="res://scenes/card_box.tscn" id="21_vy7i5"]
 [ext_resource type="Script" path="res://scripts/wave_spawn_text.gd" id="23_0yoft"]
@@ -167,75 +171,135 @@ polygon = PackedVector2Array(-6056, 192, 5918, 204, 5918, 1155, -6176, 1199)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeyq2"]
 
-[sub_resource type="Resource" id="Resource_lmybf"]
+[sub_resource type="Resource" id="Resource_f5teh"]
 script = ExtResource("20_458qt")
 speaker = 0
 line = "Ahhh! I have been waiting for you for so long... You are gonna make my work much easier"
 
-[sub_resource type="Resource" id="Resource_hsk4g"]
+[sub_resource type="Resource" id="Resource_rsab2"]
 script = ExtResource("20_458qt")
 speaker = 1
 line = "Where am I? Who are you?"
 
-[sub_resource type="Resource" id="Resource_ei2ep"]
+[sub_resource type="Resource" id="Resource_eyt7u"]
 script = ExtResource("20_458qt")
 speaker = 0
 line = "Sorry, I got carried away... You're in hell!"
 
-[sub_resource type="Resource" id="Resource_n85cy"]
+[sub_resource type="Resource" id="Resource_8i7xb"]
 script = ExtResource("20_458qt")
 speaker = 1
 line = "Why am I in hell?"
 
-[sub_resource type="Resource" id="Resource_mxot7"]
+[sub_resource type="Resource" id="Resource_cxfm0"]
 script = ExtResource("20_458qt")
 speaker = 0
-line = "Killing people, even for 'righteousness' or 'justice' doesn't get you to heaven, no matter what they say in the over-world,... although it does give you a special place in hell... I am going to give you a chance to live again! But in return you must do me a little favor."
+line = "Killing people, even for 'righteousness' or 'justice' doesn't get you to heaven, no matter what they say in the over-world... although it does give you a special place in hell... I am going to give you a chance to live again! But in return you must do me a little favor."
 
-[sub_resource type="Resource" id="Resource_ivfvh"]
+[sub_resource type="Resource" id="Resource_55vtg"]
 script = ExtResource("20_458qt")
 speaker = 1
 line = "What should I do?"
 
-[sub_resource type="Resource" id="Resource_oml2e"]
+[sub_resource type="Resource" id="Resource_1vwrd"]
 script = ExtResource("20_458qt")
 speaker = 0
 line = "See, even though I love my job, I sometimes require breaks as all devils do, I too was an angel once! I just need you to do my job for me while I'm gone on a break"
 
-[sub_resource type="Resource" id="Resource_lg7m1"]
+[sub_resource type="Resource" id="Resource_casxo"]
 script = ExtResource("20_458qt")
 speaker = 1
 line = "How am I supposed to do your job if I cannot even see where you are?"
 
-[sub_resource type="Resource" id="Resource_eqmwk"]
+[sub_resource type="Resource" id="Resource_3i7hq"]
 script = ExtResource("20_458qt")
 speaker = 0
-line = "How does what I look like matter or where I am matter to you, I need you to answer my question.... do you want to go back?"
+line = "How does what I look like matter or where I am matter to you, I need you to answer my question... do you want to go back?"
 
-[sub_resource type="Resource" id="Resource_j38pw"]
+[sub_resource type="Resource" id="Resource_xpj7w"]
 script = ExtResource("20_458qt")
 speaker = 1
 line = "That depends... What is your job?"
 
-[sub_resource type="Resource" id="Resource_8utxk"]
+[sub_resource type="Resource" id="Resource_s8juo"]
 script = ExtResource("20_458qt")
 speaker = 0
-line = "Ahh, the job is very easy for someone of your talent, you just need to free the undead from hell by murdering them, I'll keep helping you out whenever I find time"
+line = " Ahh, the job is very easy for someone of your talent, you just need to free the undead from hell by murdering them, I'll keep helping you out whenever I find time"
 
-[sub_resource type="Resource" id="Resource_wpx0d"]
+[sub_resource type="Resource" id="Resource_gp8o5"]
 script = ExtResource("20_458qt")
 speaker = 1
 line = "No, I do not accept this offer! I will not murder someone innocent for my personal gain, that is against a samurai's values."
 
-[sub_resource type="Resource" id="Resource_6u41u"]
+[sub_resource type="Resource" id="Resource_hcd6e"]
 script = ExtResource("20_458qt")
 speaker = 0
-line = "If they were innocent would they really be in hell? You could live again and meet your family once more...."
+line = "If they were innocent would they really be in hell? You could live again and meet your family once more..."
 
-[sub_resource type="Resource" id="Resource_soyij"]
+[sub_resource type="Resource" id="Resource_kmpan"]
 script = ExtResource("20_458qt")
 speaker = 1
-line = ".... Fine, I accept!"
+line = "... Fine, I accept!"
+
+[sub_resource type="Resource" id="Resource_xekyc"]
+script = ExtResource("19_2a6dy")
+lines = Array[ExtResource("20_458qt")]([SubResource("Resource_f5teh"), SubResource("Resource_rsab2"), SubResource("Resource_eyt7u"), SubResource("Resource_8i7xb"), SubResource("Resource_cxfm0"), SubResource("Resource_55vtg"), SubResource("Resource_1vwrd"), SubResource("Resource_casxo"), SubResource("Resource_3i7hq"), SubResource("Resource_xpj7w"), SubResource("Resource_s8juo"), SubResource("Resource_gp8o5"), SubResource("Resource_hcd6e"), SubResource("Resource_kmpan")])
+
+[sub_resource type="Resource" id="Resource_k6kxm"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "Am I doing the right thing?"
+
+[sub_resource type="Resource" id="Resource_neavi"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "So much killing... Is meeting my family worth all this?"
+
+[sub_resource type="Resource" id="Resource_mmlpi"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "Who am I kidding, of course it is"
+
+[sub_resource type="Resource" id="Resource_0jnud"]
+script = ExtResource("19_2a6dy")
+lines = Array[ExtResource("20_458qt")]([SubResource("Resource_k6kxm"), SubResource("Resource_neavi"), SubResource("Resource_mmlpi")])
+
+[sub_resource type="Resource" id="Resource_2r3sx"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "Did I kill for justice or was it always because I enjoyed it?"
+
+[sub_resource type="Resource" id="Resource_fayj8"]
+script = ExtResource("19_2a6dy")
+lines = Array[ExtResource("20_458qt")]([SubResource("Resource_2r3sx")])
+
+[sub_resource type="Resource" id="Resource_wm1vh"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "Killing is fun, I am enjoying this!!"
+
+[sub_resource type="Resource" id="Resource_n4rhm"]
+script = ExtResource("19_2a6dy")
+lines = Array[ExtResource("20_458qt")]([SubResource("Resource_wm1vh")])
+
+[sub_resource type="Resource" id="Resource_fw0ue"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "Killing has become too boring, I wonder if someone could do it for me..."
+
+[sub_resource type="Resource" id="Resource_5q6v4"]
+script = ExtResource("20_458qt")
+speaker = 2
+line = "..."
+
+[sub_resource type="Resource" id="Resource_ev58f"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "Ahhh! I have been waiting for you for so long... You are gonna make my work much easier"
+
+[sub_resource type="Resource" id="Resource_e73lt"]
+script = ExtResource("19_2a6dy")
+lines = Array[ExtResource("20_458qt")]([SubResource("Resource_fw0ue"), SubResource("Resource_5q6v4"), SubResource("Resource_ev58f")])
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myhlm"]
 bg_color = Color(0.6, 0.6, 0.6, 0.156863)
@@ -246,33 +310,7 @@ corner_radius_top_right = 8
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_hvbvw")
 script = ExtResource("1_m2lt0")
-
-[node name="Candles2" parent="." instance=ExtResource("2_j8adm")]
-position = Vector2(639, 126)
-
-[node name="Candles3" parent="." instance=ExtResource("2_j8adm")]
-position = Vector2(387, -580)
-
-[node name="Candles4" parent="." instance=ExtResource("2_j8adm")]
-position = Vector2(-389, -560)
-
-[node name="Candles5" parent="." instance=ExtResource("2_j8adm")]
-position = Vector2(-656, 171)
-
-[node name="Candles6" parent="." instance=ExtResource("2_j8adm")]
-position = Vector2(14, 599)
-
-[node name="Candles" parent="." instance=ExtResource("3_004in")]
-position = Vector2(-1940.26, 1634.8)
-
-[node name="Candles7" parent="." instance=ExtResource("3_004in")]
-position = Vector2(-1858, -1629)
-
-[node name="Candles8" parent="." instance=ExtResource("3_004in")]
-position = Vector2(1691, -1705)
-
-[node name="Candles9" parent="." instance=ExtResource("3_004in")]
-position = Vector2(1824, 1800)
+dialogue_path = Array[NodePath]([NodePath(""), NodePath(""), NodePath(""), NodePath("")])
 
 [node name="background" type="ColorRect" parent="."]
 z_index = -1
@@ -356,8 +394,6 @@ one_shot = true
 [node name="InterWaveTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Node" type="Node" parent="."]
-
 [node name="player" parent="." instance=ExtResource("1_j7f5f")]
 
 [node name="pistol" parent="player" instance=ExtResource("3_ttt1o")]
@@ -371,6 +407,12 @@ script = ExtResource("16_0oi6n")
 position = Vector2(-13, -45)
 scale = Vector2(30, 30)
 shape = SubResource("CircleShape2D_oeyq2")
+
+[node name="assault_rifle" parent="player" instance=ExtResource("12_05t2x")]
+
+[node name="machine_gun" parent="player" instance=ExtResource("13_i5i3e")]
+
+[node name="shotgun" parent="player" instance=ExtResource("14_lmhwi")]
 
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -460,12 +502,15 @@ text = "Wave 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DialogueLayer" type="CanvasLayer" parent="."]
-script = ExtResource("19_2a6dy")
-dialogues = Array[ExtResource("20_458qt")]([SubResource("Resource_lmybf"), SubResource("Resource_hsk4g"), SubResource("Resource_ei2ep"), SubResource("Resource_n85cy"), SubResource("Resource_mxot7"), SubResource("Resource_ivfvh"), SubResource("Resource_oml2e"), SubResource("Resource_lg7m1"), SubResource("Resource_eqmwk"), SubResource("Resource_j38pw"), SubResource("Resource_8utxk"), SubResource("Resource_wpx0d"), SubResource("Resource_6u41u"), SubResource("Resource_soyij")])
+[node name="DialogueLayerBeginning" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("20_r71ib")
+dialogues = Array[ExtResource("19_2a6dy")]([SubResource("Resource_xekyc"), SubResource("Resource_0jnud"), SubResource("Resource_fayj8"), SubResource("Resource_n4rhm"), SubResource("Resource_e73lt")])
 ninja = Color(1, 1, 1, 1)
+newbie = Color(0.522973, 0.517215, 0.128786, 1)
 
-[node name="Panel" type="Panel" parent="DialogueLayer"]
+[node name="Panel" type="Panel" parent="DialogueLayerBeginning"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -476,7 +521,7 @@ grow_vertical = 0
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_myhlm")
 
-[node name="Printer" type="RichTextLabel" parent="DialogueLayer/Panel"]
+[node name="Printer" type="RichTextLabel" parent="DialogueLayerBeginning/Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -491,6 +536,35 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("21_kpbg1")
 theme_override_font_sizes/normal_font_size = 40
 
+[node name="Candles" type="Node" parent="."]
+
+[node name="Candles2" parent="Candles" instance=ExtResource("2_j8adm")]
+position = Vector2(639, 126)
+
+[node name="Candles3" parent="Candles" instance=ExtResource("2_j8adm")]
+position = Vector2(387, -580)
+
+[node name="Candles4" parent="Candles" instance=ExtResource("2_j8adm")]
+position = Vector2(-389, -560)
+
+[node name="Candles5" parent="Candles" instance=ExtResource("2_j8adm")]
+position = Vector2(-656, 171)
+
+[node name="Candles6" parent="Candles" instance=ExtResource("2_j8adm")]
+position = Vector2(14, 599)
+
+[node name="Candles" parent="Candles" instance=ExtResource("3_004in")]
+position = Vector2(-1940.26, 1634.8)
+
+[node name="Candles7" parent="Candles" instance=ExtResource("3_004in")]
+position = Vector2(-1858, -1629)
+
+[node name="Candles8" parent="Candles" instance=ExtResource("3_004in")]
+position = Vector2(1691, -1705)
+
+[node name="Candles9" parent="Candles" instance=ExtResource("3_004in")]
+position = Vector2(1824, 1800)
+
 [connection signal="wave_ended" from="WaveManager" to="." method="_on_wave_ended"]
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="InterWaveTimer" to="." method="_wave_timeout_over"]
@@ -500,4 +574,4 @@ theme_override_font_sizes/normal_font_size = 40
 [connection signal="card_selected" from="CardSelect" to="." method="_on_card_selected"]
 [connection signal="pressed" from="CardSelect/Button" to="CardSelect" method="_on_continue_button_pressed"]
 [connection signal="visibility_changed" from="WaveSpawnText" to="WaveSpawnText" method="on_visiblilty_change"]
-[connection signal="dialogue_finished" from="DialogueLayer" to="." method="_on_dialogue_layer_dialogue_finished"]
+[connection signal="dialogue_finished" from="DialogueLayerBeginning" to="." method="_on_dialogue_layer_beginning_dialogue_finished"]

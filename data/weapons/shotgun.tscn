@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2jso6b04bh2i"]
+[gd_scene load_steps=7 format=3 uid="uid://c2jso6b04bh2i"]
 
 [ext_resource type="Script" path="res://data/weapons/weapon.gd" id="1_g04jr"]
 [ext_resource type="Resource" uid="uid://dw02mj2l8m5d3" path="res://data/weapons/handgun.tres" id="2_xb0sl"]
 [ext_resource type="PackedScene" uid="uid://bbx6xtbc5y65b" path="res://data/weapons/bullet.tscn" id="3_gcn2k"]
 [ext_resource type="Texture2D" uid="uid://bxrx8pp04xpee" path="res://assets/Shotgun.png" id="4_sdova"]
+[ext_resource type="AudioStream" uid="uid://dtcvqeal7mwe3" path="res://sounds/shotgun.mp3" id="5_blp08"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7pm3c"]
 
@@ -34,3 +35,8 @@ texture = ExtResource("4_sdova")
 
 [node name="shooting_point" type="Marker2D" parent="pivot"]
 position = Vector2(216, -27)
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_blp08")
+volume_db = -5.0
+pitch_scale = 0.6

@@ -3,7 +3,6 @@ extends CanvasLayer
 @export var waitTime: float = 5
 
 func on_visiblilty_change():
-	print('Yahoo ', %WaveSpawnText.visible)
 	if %WaveSpawnText.visible:
 		var timer: Timer = Timer.new()
 		add_child(timer)

@@ -55,6 +55,8 @@ func fire():
 			get_tree().current_scene.add_child(projectile)
 			count += 1
 			i -= 1
+			$Shoot.play()
+		
 
 	can_fire = false
 	timer.start(weapons_stats.fire_rate)
