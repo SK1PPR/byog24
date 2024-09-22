@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 3
+var health = 20
 var separation_distance = 100.0  # Minimum distance to maintain between enemies
 
 signal on_death()
@@ -19,7 +19,7 @@ func _ready():
 
 func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
-	var velocity = direction * 400.0
+	var velocity = direction * 700.0
 	
 	# Adjust velocity to avoid nearby enemies
 	velocity += get_separation_vector() * 100.0  # Increase to adjust the repelling force

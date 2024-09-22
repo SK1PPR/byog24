@@ -6,7 +6,7 @@
 script = ExtResource("1_0jrvp")
 name = "Bullet"
 bullet_speed = 350.0
-damage = 1
+damage = 5
 fire_rate = 0.25
 spread = 0.1
-range = 400.0
+range = 300.0

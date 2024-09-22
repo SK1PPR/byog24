@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 3
+var health = 40
 var separation_distance = 100.0  # Minimum distance to maintain between enemies
 
 var time_elapsed = 0.0 
@@ -12,8 +12,8 @@ signal on_death()
 var timer
 
 func type0movement(direction, delta):
-	var zigzag_amplitude = 200.0
-	var zigzag_frequency = 20.0
+	var zigzag_amplitude = 150.0
+	var zigzag_frequency = 10.0
 	var zigzag_offset = sin(time_elapsed * zigzag_frequency) * zigzag_amplitude
 
 	direction.x += zigzag_offset * delta

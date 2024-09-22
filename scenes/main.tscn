@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=60 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
@@ -11,9 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://gy88wl32c56y" path="res://scenes/square.tscn" id="5_nksia"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="6_qxm8f"]
 [ext_resource type="PackedScene" uid="uid://b6s0vfev5tf8l" path="res://scenes/pentagon.tscn" id="7_ix11m"]
-[ext_resource type="PackedScene" uid="uid://dh7t78g2mn2s6" path="res://data/weapons/assault_rifle.tscn" id="12_05t2x"]
-[ext_resource type="PackedScene" uid="uid://bxnaw4pdyf808" path="res://data/weapons/machine_gun.tscn" id="13_i5i3e"]
-[ext_resource type="PackedScene" uid="uid://c2jso6b04bh2i" path="res://data/weapons/shotgun.tscn" id="14_lmhwi"]
 [ext_resource type="Script" path="res://scripts/PowerupRange.gd" id="16_0oi6n"]
 [ext_resource type="Script" path="res://scripts/powerup_manager.gd" id="16_xl5kd"]
 [ext_resource type="Script" path="res://scripts/first_aid.gd" id="17_3jxuv"]
@@ -407,42 +404,6 @@ script = ExtResource("16_0oi6n")
 position = Vector2(-13, -45)
 scale = Vector2(30, 30)
 shape = SubResource("CircleShape2D_oeyq2")
-
-[node name="assault_rifle" parent="player" instance=ExtResource("12_05t2x")]
-
-[node name="machine_gun" parent="player" instance=ExtResource("13_i5i3e")]
-
-[node name="shotgun" parent="player" instance=ExtResource("14_lmhwi")]
-
-[node name="GameOverScreen" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 768.0
-offset_bottom = 432.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="GameOverScreen/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -543.0
-offset_top = -136.5
-offset_right = 543.0
-offset_bottom = 136.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 200
-text = "Game Over"
 
 [node name="PowerupManager" type="Node" parent="."]
 script = ExtResource("16_xl5kd")

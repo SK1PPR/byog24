@@ -6,7 +6,6 @@ extends Area2D
 @export var fired_bullets: int
 @export var fire_point_nodes: Array[NodePath]
 @export var range_area: CollisionShape2D
-@export var interval: float
 
 var timer
 var gap_timer
@@ -52,12 +51,13 @@ func fire():
 			var projectile = bullet.instantiate()
 			projectile.global_position = fire_point.global_position
 			projectile.global_rotation = fire_point.global_rotation + randf_range(-weapons_stats.spread, weapons_stats.spread)
+			projectile.damage = weapons_stats.damage
 			get_tree().current_scene.add_child(projectile)
 			count += 1
 			i -= 1
 			$Shoot.play()
-		
-
+	
+	
 	can_fire = false
 	timer.start(weapons_stats.fire_rate)
 	

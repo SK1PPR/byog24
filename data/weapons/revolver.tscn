@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://j4wfweum8nor"]
 
 [ext_resource type="Script" path="res://data/weapons/weapon.gd" id="1_sjwtt"]
-[ext_resource type="Resource" uid="uid://dw02mj2l8m5d3" path="res://data/weapons/handgun.tres" id="2_lvev2"]
+[ext_resource type="Resource" uid="uid://tb74m4d0pmsa" path="res://data/weapons/revolver.tres" id="2_edwcg"]
 [ext_resource type="PackedScene" uid="uid://bbx6xtbc5y65b" path="res://data/weapons/bullet.tscn" id="3_ob0jx"]
 [ext_resource type="Texture2D" uid="uid://db6dlyhlnylml" path="res://assets/revolver.png" id="4_x0i3g"]
 [ext_resource type="AudioStream" uid="uid://dh3rvcymx66jc" path="res://sounds/revolver-handgun.mp3" id="5_6cryr"]
@@ -14,7 +14,7 @@ visibility_layer = 4
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_sjwtt")
-weapons_stats = ExtResource("2_lvev2")
+weapons_stats = ExtResource("2_edwcg")
 bullet = ExtResource("3_ob0jx")
 fired_bullets = 1
 fire_point_nodes = Array[NodePath]([NodePath("pivot/shooting_point")])

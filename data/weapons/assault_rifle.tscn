@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dh7t78g2mn2s6"]
 
 [ext_resource type="Script" path="res://data/weapons/weapon.gd" id="1_5yitp"]
-[ext_resource type="Resource" uid="uid://hjp8p03587nk" path="res://data/weapons/pistol.tres" id="2_2peac"]
+[ext_resource type="Resource" uid="uid://b5me2es0h2338" path="res://data/weapons/assault_rifle.tres" id="2_bnsov"]
 [ext_resource type="PackedScene" uid="uid://bbx6xtbc5y65b" path="res://data/weapons/bullet.tscn" id="3_ny1aq"]
 [ext_resource type="Texture2D" uid="uid://dq14co2uy13y0" path="res://assets/assault-rifle.png" id="4_f2a7t"]
 [ext_resource type="AudioStream" uid="uid://cnuxgh40yhyf1" path="res://sounds/assault_rifle.mp3" id="5_5q32q"]
@@ -14,7 +14,7 @@ visibility_layer = 4
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_5yitp")
-weapons_stats = ExtResource("2_2peac")
+weapons_stats = ExtResource("2_bnsov")
 bullet = ExtResource("3_ny1aq")
 fired_bullets = 1
 fire_point_nodes = Array[NodePath]([NodePath("pivot/shooting_point")])
@@ -34,7 +34,7 @@ scale = Vector2(6.62491, 7.78401)
 texture = ExtResource("4_f2a7t")
 
 [node name="shooting_point" type="Marker2D" parent="pivot"]
-position = Vector2(179, -27)
+position = Vector2(178, -21)
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_5q32q")

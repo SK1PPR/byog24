@@ -1,5 +1,8 @@
 extends Node
 
+#signal for bullet shots
+signal bullet_shot
+
 func play_music():
 	$Rain.play()
 	

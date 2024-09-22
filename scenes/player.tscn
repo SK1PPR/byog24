@@ -34,7 +34,7 @@ script/source = "extends CharacterBody2D
 @export var max_tilt_angle = 15.0
 @export var bounce_height = 10
 @export var bounce_speed = 10.0
-@export var damageFactor: float = 1.0
+@export var damageFactor: float = 10.0
 
 @onready var sprite = $Sprite2D
 @onready var shadow = $shadow # Reference to the shadow Sprite2D
@@ -54,7 +54,6 @@ func _ready():
 	initial_rect_position = sprite.position
 
 func _physics_process(delta):
-	%ProgressBar.value = health
 	var direction = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
 	velocity = handle_move(direction, delta)
 	move_and_collide(velocity*delta)
@@ -88,12 +87,13 @@ func _physics_process(delta):
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 1:
 		health -= (DAMAGE_RATE * overlapping_mobs.size() * delta)*0.1*damageFactor
+		RainMusic.bullet_shot.emit()
 		if health <= 0.0:
 			health_deplete.emit()
 			get_tree().change_scene_to_file(\"res://scenes/game_over.tscn\")
 
 func _process(delta):
-	# Smooth color change based on movement
+	%ProgressBar.value = health
 	pass
 	#color_rect.color = Color(r, g, b)
 
@@ -149,7 +149,7 @@ colors = PackedColorArray(0.179995, 0.181356, 0.123274, 1, 0.975336, 0.975336, 0
 size = Vector2(72, 129)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4s222"]
-radius = 32.0055
+radius = 39.4734
 height = 127.953
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bs8r"]
@@ -169,7 +169,7 @@ wall_min_slide_angle = 0.441568
 script = SubResource("GDScript_dy3ap")
 
 [node name="shadow" type="Sprite2D" parent="."]
-modulate = Color(0.408329, 0.408329, 0.408329, 1)
+modulate = Color(0.407843, 0.407843, 0.407843, 0.588235)
 self_modulate = Color(0.340339, 0.340339, 0.340339, 1)
 position = Vector2(-4, 68)
 texture = ExtResource("2_pc3o8")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://eqagoykh5r0q"]
 
 [ext_resource type="Script" path="res://data/weapons/weapon.gd" id="1_rse73"]
-[ext_resource type="Resource" uid="uid://dw02mj2l8m5d3" path="res://data/weapons/handgun.tres" id="2_c1v2e"]
+[ext_resource type="Resource" uid="uid://xdg15e2v2x54" path="res://data/weapons/sniper.tres" id="2_v1ult"]
 [ext_resource type="PackedScene" uid="uid://bbx6xtbc5y65b" path="res://data/weapons/bullet.tscn" id="3_3ggxf"]
 [ext_resource type="Texture2D" uid="uid://300wns70xk7p" path="res://assets/sniper.png" id="4_1agrq"]
 [ext_resource type="AudioStream" uid="uid://c5f1h0si61xpm" path="res://sounds/sniper.mp3" id="5_kasps"]
@@ -14,7 +14,7 @@ visibility_layer = 4
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_rse73")
-weapons_stats = ExtResource("2_c1v2e")
+weapons_stats = ExtResource("2_v1ult")
 bullet = ExtResource("3_3ggxf")
 fired_bullets = 1
 fire_point_nodes = Array[NodePath]([NodePath("pivot/shooting_point")])

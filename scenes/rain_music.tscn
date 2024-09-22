@@ -13,9 +13,11 @@ script = ExtResource("1_scnbt")
 
 [node name="Rain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_3a8pd")
+parameters/looping = true
 
 [node name="Metal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_qt23e")
+parameters/looping = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(540, -10)

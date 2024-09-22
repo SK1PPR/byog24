@@ -3,6 +3,7 @@ extends Area2D
 var travelled_distance = 0
 const SPEED = 1000
 const RANGE = 1200
+var damage = 10
 
 func _physics_process(delta):
 	
@@ -17,4 +18,4 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	queue_free()
 	if body.has_method("take_damage"):
-		body.take_damage()
+		body.take_damage(damage)

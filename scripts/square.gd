@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 3
+var health = 30
 var separation_distance = 100.0  # Minimum distance to maintain between enemies
 
 
@@ -17,7 +17,7 @@ func _ready():
 	parent_node = get_parent()
 
 func type0movement(direction):
-	return direction* 300.0
+	return direction* 650.0
 
 func type1movement(direction):
 	direction[1] = direction[1]*5000.0

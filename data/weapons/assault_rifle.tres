@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_dgnvc")
 name = ""
-bullet_speed = 300.0
+bullet_speed = 400.0
 damage = 10
-fire_rate = 0.2
-spread = 0.1
-range = 350.0
+fire_rate = 0.5
+spread = 0.2
+range = 500.0

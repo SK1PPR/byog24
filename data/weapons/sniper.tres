@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_vif8p")
 name = ""
-bullet_speed = 300.0
-damage = 10
-fire_rate = 0.4
-spread = 0.1
-range = 350.0
+bullet_speed = 600.0
+damage = 30
+fire_rate = 3.0
+spread = 0.05
+range = 700.0
