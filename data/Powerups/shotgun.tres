@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerupBase" load_steps=3 format=3 uid="uid://l20lks0p6cpd"]
+
+[ext_resource type="Texture2D" uid="uid://bxrx8pp04xpee" path="res://assets/Shotgun.png" id="1_7uxhk"]
+[ext_resource type="Script" path="res://data/Powerups/powerup_base.gd" id="1_oxr8r"]
+
+[resource]
+script = ExtResource("1_oxr8r")
+icon = ExtResource("1_7uxhk")
+ind = 8
+desc = "This is shotgun"

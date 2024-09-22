@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerupBase" load_steps=3 format=3 uid="uid://ummix24fb17v"]
+
+[ext_resource type="Texture2D" uid="uid://b5wxkwvx6avx2" path="res://assets/CardLogos/shield.png" id="1_l1bde"]
+[ext_resource type="Script" path="res://data/Powerups/powerup_base.gd" id="1_slcmh"]
+
+[resource]
+script = ExtResource("1_slcmh")
+icon = ExtResource("1_l1bde")
+ind = 1
+desc = "Gives you shield"

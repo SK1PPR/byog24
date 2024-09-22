@@ -12,3 +12,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		if $Border.inside(event.position):
 			emit_signal("card_pressed", uid)
+
+func set_vals(r: PowerupBase):
+	$VBoxContainer/Image.texture = r.icon
+	$VBoxContainer/Panel/Label.text = r.desc

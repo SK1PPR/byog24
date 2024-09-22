@@ -1,31 +1,47 @@
-[gd_scene load_steps=62 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=78 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
 [ext_resource type="Shader" path="res://shaders/main.gdshader" id="1_vydfm"]
-[ext_resource type="PackedScene" path="res://scenes/candles.tscn" id="2_j8adm"]
-[ext_resource type="PackedScene" path="res://scenes/candles_darker.tscn" id="3_004in"]
+[ext_resource type="PackedScene" uid="uid://2ltbutl066bk" path="res://scenes/candles.tscn" id="2_j8adm"]
+[ext_resource type="PackedScene" uid="uid://casjqsckyisre" path="res://scenes/candles_darker.tscn" id="3_004in"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_6qcvf"]
 [ext_resource type="PackedScene" uid="uid://byl3dfrhj11vx" path="res://data/weapons/pistol.tscn" id="3_ttt1o"]
 [ext_resource type="PackedScene" uid="uid://frhhprjg8xrl" path="res://scenes/triangle.tscn" id="4_06rle"]
 [ext_resource type="PackedScene" uid="uid://gy88wl32c56y" path="res://scenes/square.tscn" id="5_nksia"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="6_qxm8f"]
 [ext_resource type="PackedScene" uid="uid://b6s0vfev5tf8l" path="res://scenes/pentagon.tscn" id="7_ix11m"]
+[ext_resource type="PackedScene" uid="uid://dh7t78g2mn2s6" path="res://data/weapons/assault_rifle.tscn" id="10_bkmq2"]
+[ext_resource type="PackedScene" uid="uid://d0dic2gjfpwdq" path="res://data/weapons/handgun.tscn" id="11_5x6rq"]
 [ext_resource type="PackedScene" uid="uid://eqagoykh5r0q" path="res://data/weapons/sniper.tscn" id="11_kwx25"]
 [ext_resource type="PackedScene" uid="uid://bxnaw4pdyf808" path="res://data/weapons/machine_gun.tscn" id="12_w0nqc"]
+[ext_resource type="PackedScene" uid="uid://j4wfweum8nor" path="res://data/weapons/revolver.tscn" id="14_dkygc"]
+[ext_resource type="PackedScene" uid="uid://c2jso6b04bh2i" path="res://data/weapons/shotgun.tscn" id="15_svydr"]
 [ext_resource type="Script" path="res://scripts/PowerupRange.gd" id="16_0oi6n"]
+[ext_resource type="Script" path="res://scripts/gun_used.gd" id="16_klxqv"]
 [ext_resource type="Script" path="res://scripts/powerup_manager.gd" id="16_xl5kd"]
 [ext_resource type="Script" path="res://scripts/first_aid.gd" id="17_3jxuv"]
 [ext_resource type="Script" path="res://scripts/shield.gd" id="18_v7ry1"]
 [ext_resource type="Script" path="res://scripts/poison_aura.gd" id="19_0vmpu"]
 [ext_resource type="Script" path="res://data/conversations/dialogues.gd" id="19_2a6dy"]
+[ext_resource type="Script" path="res://data/Powerups/powerup_base.gd" id="19_tbs0j"]
 [ext_resource type="Script" path="res://scripts/card_select_menu.gd" id="20_8gvqi"]
 [ext_resource type="Script" path="res://data/conversations/comment.gd" id="20_458qt"]
 [ext_resource type="Script" path="res://data/conversations/conversation.gd" id="20_r71ib"]
+[ext_resource type="Resource" uid="uid://cebiv3cv2newt" path="res://data/Powerups/firstAid.tres" id="20_sqq5p"]
+[ext_resource type="Resource" uid="uid://ummix24fb17v" path="res://data/Powerups/shield.tres" id="21_gyubf"]
 [ext_resource type="FontFile" uid="uid://dwfq544lcvb6w" path="res://fonts/JMH Typewriter-Black.otf" id="21_kpbg1"]
 [ext_resource type="PackedScene" uid="uid://dvkb7fkt3u40n" path="res://scenes/card_box.tscn" id="21_vy7i5"]
+[ext_resource type="Resource" uid="uid://bxco2gmht2x35" path="res://data/Powerups/poisonAura.tres" id="22_j4ev5"]
 [ext_resource type="Script" path="res://scripts/wave_spawn_text.gd" id="23_0yoft"]
+[ext_resource type="Resource" uid="uid://bpfmcblnviygl" path="res://data/Powerups/assaultGun.tres" id="23_6t3h4"]
+[ext_resource type="Resource" uid="uid://dpgcpgyot0845" path="res://data/Powerups/handGun.tres" id="24_fr63i"]
 [ext_resource type="Texture2D" uid="uid://bmyoqx4nm6w1r" path="res://assets/dehvillh.png" id="24_op8ry"]
+[ext_resource type="Resource" uid="uid://b82c2kfo7v5t6" path="res://data/Powerups/machineGun.tres" id="25_r3ehd"]
+[ext_resource type="Resource" uid="uid://wsl47f4v66xp" path="res://data/Powerups/pistol.tres" id="26_lq8ev"]
+[ext_resource type="Resource" uid="uid://5dc0e314n3jg" path="res://data/Powerups/revolver.tres" id="27_cfwji"]
+[ext_resource type="Resource" uid="uid://l20lks0p6cpd" path="res://data/Powerups/shotgun.tres" id="28_obuma"]
+[ext_resource type="Resource" uid="uid://cluualbauyxjo" path="res://data/Powerups/sniper.tres" id="29_jxc7n"]
 
 [sub_resource type="Shader" id="Shader_mlybf"]
 code = "// https://www.shadertoy.com/view/MdffD7
@@ -394,6 +410,7 @@ one_shot = true
 one_shot = true
 
 [node name="player" parent="." instance=ExtResource("1_j7f5f")]
+weapons = Array[PackedScene]([ExtResource("10_bkmq2"), ExtResource("11_5x6rq"), ExtResource("12_w0nqc"), ExtResource("3_ttt1o"), ExtResource("14_dkygc"), ExtResource("15_svydr"), ExtResource("11_kwx25")])
 
 [node name="pistol" parent="player" instance=ExtResource("3_ttt1o")]
 position = Vector2(82, 0)
@@ -414,7 +431,9 @@ scale = Vector2(30, 30)
 shape = SubResource("CircleShape2D_oeyq2")
 
 [node name="PowerupManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("16_xl5kd")
+Powerups = Array[ExtResource("19_tbs0j")]([ExtResource("20_sqq5p"), ExtResource("21_gyubf"), ExtResource("22_j4ev5"), ExtResource("23_6t3h4"), ExtResource("24_fr63i"), ExtResource("25_r3ehd"), ExtResource("26_lq8ev"), ExtResource("27_cfwji"), ExtResource("28_obuma"), ExtResource("29_jxc7n")])
 
 [node name="FirstAid" type="Node" parent="PowerupManager"]
 script = ExtResource("17_3jxuv")
@@ -424,6 +443,33 @@ script = ExtResource("18_v7ry1")
 
 [node name="PoisonAura" type="Node" parent="PowerupManager"]
 script = ExtResource("19_0vmpu")
+
+[node name="AssaultGun" type="Node" parent="PowerupManager"]
+script = ExtResource("16_klxqv")
+
+[node name="HandGun" type="Node" parent="PowerupManager"]
+script = ExtResource("16_klxqv")
+gunId = 1
+
+[node name="MachineGun" type="Node" parent="PowerupManager"]
+script = ExtResource("16_klxqv")
+gunId = 2
+
+[node name="Pistol" type="Node" parent="PowerupManager"]
+script = ExtResource("16_klxqv")
+gunId = 3
+
+[node name="Revolver" type="Node" parent="PowerupManager"]
+script = ExtResource("16_klxqv")
+gunId = 4
+
+[node name="Shotgun" type="Node" parent="PowerupManager"]
+script = ExtResource("16_klxqv")
+gunId = 5
+
+[node name="Sniper" type="Node" parent="PowerupManager"]
+script = ExtResource("16_klxqv")
+gunId = 6
 
 [node name="CardSelect" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -540,7 +586,15 @@ position = Vector2(1824, 1800)
 [connection signal="first_aid_used" from="PowerupManager/FirstAid" to="player" method="_on_first_aid_used"]
 [connection signal="shield_used" from="PowerupManager/Shield" to="player" method="_on_shield_shield_used"]
 [connection signal="poison_aura_used" from="PowerupManager/PoisonAura" to="player/PowerupRange" method="_on_poison_aura_used"]
+[connection signal="gun_used" from="PowerupManager/AssaultGun" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/HandGun" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/MachineGun" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/Pistol" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/Revolver" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/Shotgun" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/Sniper" to="player" method="_on_gun_used"]
 [connection signal="card_selected" from="CardSelect" to="." method="_on_card_selected"]
+[connection signal="visibility_changed" from="CardSelect" to="CardSelect" method="_on_visibility_changed"]
 [connection signal="pressed" from="CardSelect/Button" to="CardSelect" method="_on_continue_button_pressed"]
 [connection signal="visibility_changed" from="WaveSpawnText" to="WaveSpawnText" method="on_visiblilty_change"]
 [connection signal="dialogue_finished" from="DialogueLayerBeginning" to="." method="_on_dialogue_layer_beginning_dialogue_finished"]

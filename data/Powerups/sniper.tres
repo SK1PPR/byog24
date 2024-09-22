@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerupBase" load_steps=3 format=3 uid="uid://cluualbauyxjo"]
+
+[ext_resource type="Texture2D" uid="uid://300wns70xk7p" path="res://assets/sniper.png" id="1_w47it"]
+[ext_resource type="Script" path="res://data/Powerups/powerup_base.gd" id="1_ya2pc"]
+
+[resource]
+script = ExtResource("1_ya2pc")
+icon = ExtResource("1_w47it")
+ind = 9
+desc = "This is sniper"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerupBase" load_steps=3 format=3 uid="uid://bxco2gmht2x35"]
+
+[ext_resource type="Texture2D" uid="uid://ihhl5ijxy1ln" path="res://assets/CardLogos/poisonAura.png" id="1_fhp5p"]
+[ext_resource type="Script" path="res://data/Powerups/powerup_base.gd" id="2_6bd67"]
+
+[resource]
+script = ExtResource("2_6bd67")
+icon = ExtResource("1_fhp5p")
+ind = 2
+desc = "Poison Aura Bruhh"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerupBase" load_steps=3 format=3 uid="uid://bpfmcblnviygl"]
+
+[ext_resource type="Texture2D" uid="uid://dq14co2uy13y0" path="res://assets/assault-rifle.png" id="1_y40ms"]
+[ext_resource type="Script" path="res://data/Powerups/powerup_base.gd" id="2_yn1a0"]
+
+[resource]
+script = ExtResource("2_yn1a0")
+icon = ExtResource("1_y40ms")
+ind = 3
+desc = "This is assault gun"

@@ -20,3 +20,7 @@ func _card_clicked(uid: int):
 	else:
 		bord2.texture = c2.selectBorder
 	
+func set_cards(r0: PowerupBase, r1: PowerupBase, r2: PowerupBase):
+	get_child(0).set_vals(r0)
+	get_child(1).set_vals(r1)
+	get_child(2).set_vals(r2)

@@ -35,10 +35,12 @@ script/source = "extends CharacterBody2D
 @export var bounce_height = 10
 @export var bounce_speed = 10.0
 @export var damageFactor: float = 10.0
+@export var weapons: Array[PackedScene]
 
 @onready var sprite = $Sprite2D
 @onready var shadow = $shadow # Reference to the shadow Sprite2D
 @onready var collision_shape = $CollisionShape2D
+@onready var gunPoints = [$GunPoints/p1, $GunPoints/p2, $GunPoints/p3, $GunPoints/p4, $GunPoints/p5, $GunPoints/p6]
 
 signal health_deplete
 
@@ -52,6 +54,7 @@ var initial_rect_position
 
 func _ready():
 	initial_rect_position = sprite.position
+	_on_gun_used(0)
 
 func _physics_process(delta):
 	var direction = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
@@ -139,6 +142,16 @@ func _on_shield_shield_used(shieldTime: int, df: float) -> void:
 	await timer.timeout
 	timer.queue_free()
 	damageFactor = 1.0
+
+func _on_gun_used(id: int) -> void:
+	if gunPoints.size() > 0:
+		gunPoints.shuffle()
+		var sppos = gunPoints[0].position
+		print(gunPoints.size())
+		var inst = weapons[id].instantiate()
+		inst.global_position = sppos
+		get_child(1).add_child(inst)
+		gunPoints.remove_at(0)
 "
 
 [sub_resource type="Gradient" id="Gradient_dg3yn"]
@@ -163,6 +176,7 @@ polygon = PackedVector2Array(-40, -69, 41, -69, 39, 68, -39, 68)
 
 [node name="player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_der1l")
+collision_layer = 9
 collision_mask = 4
 motion_mode = 1
 wall_min_slide_angle = 0.441568
@@ -231,3 +245,23 @@ show_percentage = false
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_7puaq")
+
+[node name="GunPoints" type="Node2D" parent="."]
+
+[node name="p1" type="Node2D" parent="GunPoints"]
+position = Vector2(-2, -120)
+
+[node name="p2" type="Node2D" parent="GunPoints"]
+position = Vector2(70, -63)
+
+[node name="p3" type="Node2D" parent="GunPoints"]
+position = Vector2(79, 67)
+
+[node name="p4" type="Node2D" parent="GunPoints"]
+position = Vector2(0, 116)
+
+[node name="p5" type="Node2D" parent="GunPoints"]
+position = Vector2(-68, 66)
+
+[node name="p6" type="Node2D" parent="GunPoints"]
+position = Vector2(-73, -63)

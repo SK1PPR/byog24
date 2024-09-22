@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerupBase" load_steps=3 format=3 uid="uid://dpgcpgyot0845"]
+
+[ext_resource type="Texture2D" uid="uid://46xee5ajkpt6" path="res://assets/handgun.png" id="1_s0l2u"]
+[ext_resource type="Script" path="res://data/Powerups/powerup_base.gd" id="2_ywfis"]
+
+[resource]
+script = ExtResource("2_ywfis")
+icon = ExtResource("1_s0l2u")
+ind = 4
+desc = "This is a handgun"
