@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PowerupBase" load_steps=3 format=3 uid="uid://cebiv3cv2newt"]
+
+[ext_resource type="Texture2D" uid="uid://nw4gprbs7geu" path="res://assets/CardLogos/firstAid.png" id="1_o7cb5"]
+[ext_resource type="Script" path="res://data/Powerups/powerup_base.gd" id="1_t2pqw"]
+
+[resource]
+script = ExtResource("1_t2pqw")
+icon = ExtResource("1_o7cb5")
+ind = 0

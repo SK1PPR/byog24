@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=35 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
@@ -18,9 +18,13 @@
 [ext_resource type="Script" path="res://scripts/PowerupRange.gd" id="16_0oi6n"]
 [ext_resource type="Script" path="res://scripts/powerup_manager.gd" id="16_xl5kd"]
 [ext_resource type="Script" path="res://scripts/first_aid.gd" id="17_3jxuv"]
+[ext_resource type="Script" path="res://data/Powerups/powerup_base.gd" id="18_eihtq"]
 [ext_resource type="Script" path="res://scripts/shield.gd" id="18_v7ry1"]
 [ext_resource type="Script" path="res://scripts/poison_aura.gd" id="19_0vmpu"]
+[ext_resource type="Resource" uid="uid://cebiv3cv2newt" path="res://data/Powerups/firstAid.tres" id="19_eideh"]
 [ext_resource type="Script" path="res://scripts/card_select_menu.gd" id="20_8gvqi"]
+[ext_resource type="Resource" uid="uid://ummix24fb17v" path="res://data/Powerups/shield.tres" id="20_f0fu1"]
+[ext_resource type="Resource" uid="uid://bxco2gmht2x35" path="res://data/Powerups/poisonAura.tres" id="21_u17qh"]
 [ext_resource type="PackedScene" uid="uid://dvkb7fkt3u40n" path="res://scenes/card_box.tscn" id="21_vy7i5"]
 [ext_resource type="Script" path="res://scripts/wave_spawn_text.gd" id="23_0yoft"]
 
@@ -250,6 +254,7 @@ one_shot = true
 
 [node name="player" parent="." instance=ExtResource("1_j7f5f")]
 position = Vector2(-505, 323)
+collision_layer = 9
 
 [node name="machine_gun" parent="player" instance=ExtResource("9_rjlbj")]
 position = Vector2(78, 5)
@@ -312,7 +317,9 @@ theme_override_font_sizes/font_size = 200
 text = "Game Over"
 
 [node name="PowerupManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("16_xl5kd")
+Powerups = Array[ExtResource("18_eihtq")]([ExtResource("19_eideh"), ExtResource("20_f0fu1"), ExtResource("21_u17qh")])
 
 [node name="FirstAid" type="Node" parent="PowerupManager"]
 script = ExtResource("17_3jxuv")

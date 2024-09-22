@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr4mochs6brk0"]
+
+[ext_resource type="Script" path="res://scripts/pickup.gd" id="1_atvdb"]
+[ext_resource type="Texture2D" uid="uid://nw4gprbs7geu" path="res://assets/CardLogos/firstAid.png" id="1_exegv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32bdh"]
+
+[node name="Pickup" type="Area2D"]
+collision_mask = 8
+script = ExtResource("1_atvdb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 20)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_32bdh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20, 21)
+texture = ExtResource("1_exegv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

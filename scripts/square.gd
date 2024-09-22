@@ -6,7 +6,10 @@ var separation_distance = 100.0  # Minimum distance to maintain between enemies
 
 @onready var player = get_node("/root/main/player")
 @onready var waveman = get_node("/root/main/WaveManager")
+@onready var powerupman = get_node("/root/main/PowerupManager")
 @onready var parent_node  # This will reference the parent node containing all enemies (other instances of this scene)
+
+@export var dropRate: float = 0.1
 var timer
 signal on_death()
 
@@ -46,6 +49,9 @@ func take_damage(damage: float = 1):
 	health -= damage
 	#$Slime.play_hurt()
 	if health <= 0:
+		var rand_var: float = randf()
+		if rand_var <= dropRate:
+			powerupman.spawn_random_pickup(position)
 		emit_signal("on_death")
 		queue_free()
 func get_separation_vector() -> Vector2:

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ihhl5ijxy1ln"
-path="res://.godot/imported/poison.png-37a9d53129dfd7b918d27e18cd630b87.ctex"
+path="res://.godot/imported/poisonAura.png-0a01f2d8953278dac6fe410ec60b4c06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CardLogos/poison.png"
-dest_files=["res://.godot/imported/poison.png-37a9d53129dfd7b918d27e18cd630b87.ctex"]
+source_file="res://assets/CardLogos/poisonAura.png"
+dest_files=["res://.godot/imported/poisonAura.png-0a01f2d8953278dac6fe410ec60b4c06.ctex"]
 
 [params]
 
