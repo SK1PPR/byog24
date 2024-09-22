@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://2ltbutl066bk"]
+
+[ext_resource type="Script" path="res://scripts/candle.gd" id="1_2bdrx"]
+[ext_resource type="Texture2D" uid="uid://bx0qlsrfsx011" path="res://assets/pointlight.webp" id="1_mwtkc"]
+
+[sub_resource type="Gradient" id="Gradient_3bvw2"]
+offsets = PackedFloat32Array(0.357143, 0.818182)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kv25m"]
+noise_type = 3
+frequency = 0.0312
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jhrww"]
+color_ramp = SubResource("Gradient_3bvw2")
+noise = SubResource("FastNoiseLite_kv25m")
+
+[node name="Candles" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(5, 5)
+color = Color(0.815686, 0.0392157, 0, 1)
+shadow_enabled = true
+texture = ExtResource("1_mwtkc")
+texture_scale = 1.6
+script = ExtResource("1_2bdrx")
+noise = SubResource("NoiseTexture2D_jhrww")

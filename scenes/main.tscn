@@ -1,8 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=46 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
 [ext_resource type="Shader" path="res://shaders/main.gdshader" id="1_vydfm"]
+[ext_resource type="PackedScene" uid="uid://2ltbutl066bk" path="res://scenes/candles.tscn" id="2_j8adm"]
+[ext_resource type="PackedScene" uid="uid://casjqsckyisre" path="res://scenes/candles_darker.tscn" id="3_004in"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_6qcvf"]
 [ext_resource type="PackedScene" uid="uid://byl3dfrhj11vx" path="res://data/weapons/pistol.tscn" id="3_ttt1o"]
 [ext_resource type="PackedScene" uid="uid://frhhprjg8xrl" path="res://scenes/triangle.tscn" id="4_06rle"]
@@ -245,12 +247,39 @@ y_sort_enabled = true
 material = SubResource("ShaderMaterial_hvbvw")
 script = ExtResource("1_m2lt0")
 
+[node name="Candles2" parent="." instance=ExtResource("2_j8adm")]
+position = Vector2(639, 126)
+
+[node name="Candles3" parent="." instance=ExtResource("2_j8adm")]
+position = Vector2(387, -580)
+
+[node name="Candles4" parent="." instance=ExtResource("2_j8adm")]
+position = Vector2(-389, -560)
+
+[node name="Candles5" parent="." instance=ExtResource("2_j8adm")]
+position = Vector2(-656, 171)
+
+[node name="Candles6" parent="." instance=ExtResource("2_j8adm")]
+position = Vector2(14, 599)
+
+[node name="Candles" parent="." instance=ExtResource("3_004in")]
+position = Vector2(-1940.26, 1634.8)
+
+[node name="Candles7" parent="." instance=ExtResource("3_004in")]
+position = Vector2(-1858, -1629)
+
+[node name="Candles8" parent="." instance=ExtResource("3_004in")]
+position = Vector2(1691, -1705)
+
+[node name="Candles9" parent="." instance=ExtResource("3_004in")]
+position = Vector2(1824, 1800)
+
 [node name="background" type="ColorRect" parent="."]
 z_index = -1
-offset_left = -5702.0
-offset_top = -3514.0
-offset_right = -5662.0
-offset_bottom = -3474.0
+offset_left = -5648.0
+offset_top = -3621.0
+offset_right = -5608.0
+offset_bottom = -3581.0
 scale = Vector2(223.948, 171.64)
 color = Color(0.14902, 0.109804, 0.133333, 1)
 
@@ -266,10 +295,10 @@ scale = Vector2(553.711, -189.327)
 color = Color(0.602408, 0, 0.0998547, 1)
 
 [node name="DevilCircle" type="Sprite2D" parent="."]
-position = Vector2(0, -500)
-scale = Vector2(1.75, 1.75)
+position = Vector2(0, -1000)
+scale = Vector2(2, 2)
 texture = ExtResource("24_op8ry")
-offset = Vector2(0, 250)
+offset = Vector2(0, 500)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_6qcvf")

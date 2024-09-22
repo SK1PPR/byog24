@@ -33,5 +33,6 @@ position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_sfdmx")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 energy = 0.7
 texture = ExtResource("3_n86wb")
