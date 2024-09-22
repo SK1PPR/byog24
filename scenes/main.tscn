@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=32 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/card_select_menu.gd" id="20_8gvqi"]
 [ext_resource type="PackedScene" uid="uid://dvkb7fkt3u40n" path="res://scenes/card_box.tscn" id="21_vy7i5"]
 [ext_resource type="Script" path="res://scripts/wave_spawn_text.gd" id="23_0yoft"]
+[ext_resource type="Texture2D" uid="uid://bmyoqx4nm6w1r" path="res://assets/dehvillh.png" id="24_op8ry"]
 
 [sub_resource type="Shader" id="Shader_mlybf"]
 code = "// https://www.shadertoy.com/view/MdffD7
@@ -173,14 +174,16 @@ material = SubResource("ShaderMaterial_hvbvw")
 script = ExtResource("1_m2lt0")
 
 [node name="background" type="ColorRect" parent="."]
-offset_left = -4122.0
-offset_top = -3322.0
-offset_right = -4082.0
-offset_bottom = -3282.0
+z_index = -1
+offset_left = -5702.0
+offset_top = -3514.0
+offset_right = -5662.0
+offset_bottom = -3474.0
 scale = Vector2(223.948, 171.64)
-color = Color(0.547389, 0.247493, 0.321294, 1)
+color = Color(0.14902, 0.109804, 0.133333, 1)
 
 [node name="ColorRect" type="ColorRect" parent="background"]
+visible = false
 material = SubResource("ShaderMaterial_3jex4")
 layout_mode = 0
 offset_left = -9.77906
@@ -189,6 +192,12 @@ offset_right = 30.2209
 offset_bottom = 81.6104
 scale = Vector2(553.711, -189.327)
 color = Color(0.602408, 0, 0.0998547, 1)
+
+[node name="Dehvillh" type="Sprite2D" parent="."]
+position = Vector2(0, -1000)
+scale = Vector2(2, 2)
+texture = ExtResource("24_op8ry")
+offset = Vector2(0, 500)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_6qcvf")
