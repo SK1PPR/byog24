@@ -1,4 +1,4 @@
-extends Powerup
+extends Node
 
 signal first_aid_used(inc: int)
 @export var HEALTH_INC = 50

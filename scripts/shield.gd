@@ -1,4 +1,4 @@
-extends Powerup
+extends Node
 
 signal shield_used(shieldTime: int, damageFactor: float)
 @export var shieldTime: int = 40

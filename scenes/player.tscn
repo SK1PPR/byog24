@@ -139,6 +139,10 @@ func _on_shield_shield_used(shieldTime: int, df: float) -> void:
 	await timer.timeout
 	timer.queue_free()
 	damageFactor = 1.0
+
+func _on_weapon_picked(gunid: int):
+	
+	pass
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bs8r"]

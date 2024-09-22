@@ -1,12 +1,12 @@
 Sprite2D
+Node2D
+Node
 ColorRect
 CollisionShape2D
 Area2D
 Label
 CanvasLayer
 Button
-Node
-Node2D
 Panel
 VBoxContainer
 MarginContainer
