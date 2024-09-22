@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=43 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://gy88wl32c56y" path="res://scenes/square.tscn" id="5_nksia"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="6_qxm8f"]
 [ext_resource type="PackedScene" uid="uid://b6s0vfev5tf8l" path="res://scenes/pentagon.tscn" id="7_ix11m"]
+[ext_resource type="PackedScene" uid="uid://dh7t78g2mn2s6" path="res://data/weapons/assault_rifle.tscn" id="9_erfvy"]
+[ext_resource type="PackedScene" uid="uid://d0dic2gjfpwdq" path="res://data/weapons/handgun.tscn" id="10_25tc4"]
+[ext_resource type="PackedScene" uid="uid://bxnaw4pdyf808" path="res://data/weapons/machine_gun.tscn" id="11_ha13f"]
+[ext_resource type="PackedScene" uid="uid://byl3dfrhj11vx" path="res://data/weapons/pistol.tscn" id="12_g0007"]
+[ext_resource type="PackedScene" uid="uid://j4wfweum8nor" path="res://data/weapons/revolver.tscn" id="13_jorcj"]
+[ext_resource type="PackedScene" uid="uid://c2jso6b04bh2i" path="res://data/weapons/shotgun.tscn" id="14_76kv5"]
+[ext_resource type="PackedScene" uid="uid://eqagoykh5r0q" path="res://data/weapons/sniper.tscn" id="15_s6u7l"]
 [ext_resource type="Script" path="res://scripts/PowerupRange.gd" id="16_0oi6n"]
 [ext_resource type="Script" path="res://scripts/powerup_manager.gd" id="16_xl5kd"]
 [ext_resource type="Script" path="res://scripts/first_aid.gd" id="17_3jxuv"]
@@ -256,6 +263,7 @@ one_shot = true
 [node name="player" parent="." instance=ExtResource("1_j7f5f")]
 position = Vector2(-505, 323)
 collision_layer = 9
+weapons = Array[PackedScene]([ExtResource("9_erfvy"), ExtResource("10_25tc4"), ExtResource("11_ha13f"), ExtResource("12_g0007"), ExtResource("13_jorcj"), ExtResource("14_76kv5"), ExtResource("15_s6u7l")])
 
 [node name="PowerupRange" type="Area2D" parent="player"]
 collision_mask = 2
@@ -265,20 +273,6 @@ script = ExtResource("16_0oi6n")
 position = Vector2(-13, -45)
 scale = Vector2(30, 30)
 shape = SubResource("CircleShape2D_oeyq2")
-
-[node name="GunPoints" type="Node2D" parent="player"]
-
-[node name="p1" type="Sprite2D" parent="player/GunPoints"]
-
-[node name="p2" type="Sprite2D" parent="player/GunPoints"]
-
-[node name="p3" type="Sprite2D" parent="player/GunPoints"]
-
-[node name="p4" type="Sprite2D" parent="player/GunPoints"]
-
-[node name="p5" type="Sprite2D" parent="player/GunPoints"]
-
-[node name="p6" type="Sprite2D" parent="player/GunPoints"]
 
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -399,6 +393,13 @@ vertical_alignment = 1
 [connection signal="first_aid_used" from="PowerupManager/FirstAid" to="player" method="_on_first_aid_used"]
 [connection signal="shield_used" from="PowerupManager/Shield" to="player" method="_on_shield_shield_used"]
 [connection signal="poison_aura_used" from="PowerupManager/PoisonAura" to="player/PowerupRange" method="_on_poison_aura_used"]
+[connection signal="gun_used" from="PowerupManager/AssaultGun" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/HandGun" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/MachineGun" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/Pistol" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/Revolver" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/Shotgun" to="player" method="_on_gun_used"]
+[connection signal="gun_used" from="PowerupManager/Sniper" to="player" method="_on_gun_used"]
 [connection signal="card_selected" from="CardSelect" to="." method="_on_card_selected"]
 [connection signal="visibility_changed" from="CardSelect" to="CardSelect" method="_on_visibility_changed"]
 [connection signal="pressed" from="CardSelect/Button" to="CardSelect" method="_on_continue_button_pressed"]
