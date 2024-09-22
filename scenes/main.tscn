@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=44 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
@@ -9,18 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://gy88wl32c56y" path="res://scenes/square.tscn" id="5_nksia"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="6_qxm8f"]
 [ext_resource type="PackedScene" uid="uid://b6s0vfev5tf8l" path="res://scenes/pentagon.tscn" id="7_ix11m"]
-[ext_resource type="PackedScene" uid="uid://dh7t78g2mn2s6" path="res://data/weapons/assault_rifle.tscn" id="9_1xvox"]
-[ext_resource type="PackedScene" uid="uid://bxnaw4pdyf808" path="res://data/weapons/machine_gun.tscn" id="9_rjlbj"]
-[ext_resource type="PackedScene" uid="uid://eqagoykh5r0q" path="res://data/weapons/sniper.tscn" id="10_0ajwb"]
-[ext_resource type="PackedScene" uid="uid://d0dic2gjfpwdq" path="res://data/weapons/handgun.tscn" id="11_o4d2n"]
-[ext_resource type="PackedScene" uid="uid://c2jso6b04bh2i" path="res://data/weapons/shotgun.tscn" id="14_kdi8e"]
-[ext_resource type="PackedScene" uid="uid://j4wfweum8nor" path="res://data/weapons/revolver.tscn" id="15_ibyf6"]
 [ext_resource type="Script" path="res://scripts/PowerupRange.gd" id="16_0oi6n"]
 [ext_resource type="Script" path="res://scripts/powerup_manager.gd" id="16_xl5kd"]
 [ext_resource type="Script" path="res://scripts/first_aid.gd" id="17_3jxuv"]
 [ext_resource type="Script" path="res://scripts/shield.gd" id="18_v7ry1"]
 [ext_resource type="Script" path="res://scripts/poison_aura.gd" id="19_0vmpu"]
+[ext_resource type="Script" path="res://scenes/dialogues.gd" id="19_2a6dy"]
 [ext_resource type="Script" path="res://scripts/card_select_menu.gd" id="20_8gvqi"]
+[ext_resource type="Script" path="res://scripts/comment.gd" id="20_458qt"]
+[ext_resource type="FontFile" uid="uid://dwfq544lcvb6w" path="res://fonts/JMH Typewriter-Black.otf" id="21_kpbg1"]
 [ext_resource type="PackedScene" uid="uid://dvkb7fkt3u40n" path="res://scenes/card_box.tscn" id="21_vy7i5"]
 [ext_resource type="Script" path="res://scripts/wave_spawn_text.gd" id="23_0yoft"]
 [ext_resource type="Texture2D" uid="uid://bmyoqx4nm6w1r" path="res://assets/dehvillh.png" id="24_op8ry"]
@@ -168,6 +165,81 @@ polygon = PackedVector2Array(-6056, 192, 5918, 204, 5918, 1155, -6176, 1199)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeyq2"]
 
+[sub_resource type="Resource" id="Resource_lmybf"]
+script = ExtResource("20_458qt")
+speaker = 0
+line = "Ahhh! I have been waiting for you for so long... You are gonna make my work much easier"
+
+[sub_resource type="Resource" id="Resource_hsk4g"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "Where am I? Who are you?"
+
+[sub_resource type="Resource" id="Resource_ei2ep"]
+script = ExtResource("20_458qt")
+speaker = 0
+line = "Sorry, I got carried away... You're in hell!"
+
+[sub_resource type="Resource" id="Resource_n85cy"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "Why am I in hell?"
+
+[sub_resource type="Resource" id="Resource_mxot7"]
+script = ExtResource("20_458qt")
+speaker = 0
+line = "Killing people, even for 'righteousness' or 'justice' doesn't get you to heaven, no matter what they say in the over-world,... although it does give you a special place in hell... I am going to give you a chance to live again! But in return you must do me a little favor."
+
+[sub_resource type="Resource" id="Resource_ivfvh"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "What should I do?"
+
+[sub_resource type="Resource" id="Resource_oml2e"]
+script = ExtResource("20_458qt")
+speaker = 0
+line = "See, even though I love my job, I sometimes require breaks as all devils do, I too was an angel once! I just need you to do my job for me while I'm gone on a break"
+
+[sub_resource type="Resource" id="Resource_lg7m1"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "How am I supposed to do your job if I cannot even see where you are?"
+
+[sub_resource type="Resource" id="Resource_eqmwk"]
+script = ExtResource("20_458qt")
+speaker = 0
+line = "How does what I look like matter or where I am matter to you, I need you to answer my question.... do you want to go back?"
+
+[sub_resource type="Resource" id="Resource_j38pw"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "That depends... What is your job?"
+
+[sub_resource type="Resource" id="Resource_8utxk"]
+script = ExtResource("20_458qt")
+speaker = 0
+line = "Ahh, the job is very easy for someone of your talent, you just need to free the undead from hell by murdering them, I'll keep helping you out whenever I find time"
+
+[sub_resource type="Resource" id="Resource_wpx0d"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = "No, I do not accept this offer! I will not murder someone innocent for my personal gain, that is against a samurai's values."
+
+[sub_resource type="Resource" id="Resource_6u41u"]
+script = ExtResource("20_458qt")
+speaker = 0
+line = "If they were innocent would they really be in hell? You could live again and meet your family once more...."
+
+[sub_resource type="Resource" id="Resource_soyij"]
+script = ExtResource("20_458qt")
+speaker = 1
+line = ".... Fine, I accept!"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myhlm"]
+bg_color = Color(0.6, 0.6, 0.6, 0.156863)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+
 [node name="main" type="Node2D"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_hvbvw")
@@ -193,11 +265,11 @@ offset_bottom = 81.6104
 scale = Vector2(553.711, -189.327)
 color = Color(0.602408, 0, 0.0998547, 1)
 
-[node name="Dehvillh" type="Sprite2D" parent="."]
-position = Vector2(0, -1000)
-scale = Vector2(2, 2)
+[node name="DevilCircle" type="Sprite2D" parent="."]
+position = Vector2(0, -500)
+scale = Vector2(1.75, 1.75)
 texture = ExtResource("24_op8ry")
-offset = Vector2(0, 500)
+offset = Vector2(0, 250)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_6qcvf")
@@ -258,28 +330,9 @@ one_shot = true
 [node name="Node" type="Node" parent="."]
 
 [node name="player" parent="." instance=ExtResource("1_j7f5f")]
-position = Vector2(-505, 323)
-
-[node name="machine_gun" parent="player" instance=ExtResource("9_rjlbj")]
-position = Vector2(78, 5)
-
-[node name="sniper" parent="player" instance=ExtResource("10_0ajwb")]
-position = Vector2(74, 85)
-
-[node name="assault_rifle" parent="player" instance=ExtResource("9_1xvox")]
-position = Vector2(-86, -63)
 
 [node name="pistol" parent="player" instance=ExtResource("3_ttt1o")]
-position = Vector2(-83, -2)
-
-[node name="handgun" parent="player" instance=ExtResource("11_o4d2n")]
-position = Vector2(79, -65)
-
-[node name="shotgun" parent="player" instance=ExtResource("14_kdi8e")]
-position = Vector2(-86, 81)
-
-[node name="revolver" parent="player" instance=ExtResource("15_ibyf6")]
-position = Vector2(42, -122)
+position = Vector2(82, 0)
 
 [node name="PowerupRange" type="Area2D" parent="player"]
 collision_mask = 2
@@ -365,14 +418,49 @@ visible = false
 script = ExtResource("23_0yoft")
 
 [node name="Label" type="Label" parent="WaveSpawnText"]
-offset_left = 645.0
-offset_top = 390.0
-offset_right = 1330.0
-offset_bottom = 698.0
-theme_override_font_sizes/font_size = 100
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -342.5
+offset_right = 342.5
+offset_bottom = 308.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("21_kpbg1")
+theme_override_font_sizes/font_size = 150
 text = "Wave 1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DialogueLayer" type="CanvasLayer" parent="."]
+script = ExtResource("19_2a6dy")
+dialogues = Array[ExtResource("20_458qt")]([SubResource("Resource_lmybf"), SubResource("Resource_hsk4g"), SubResource("Resource_ei2ep"), SubResource("Resource_n85cy"), SubResource("Resource_mxot7"), SubResource("Resource_ivfvh"), SubResource("Resource_oml2e"), SubResource("Resource_lg7m1"), SubResource("Resource_eqmwk"), SubResource("Resource_j38pw"), SubResource("Resource_8utxk"), SubResource("Resource_wpx0d"), SubResource("Resource_6u41u"), SubResource("Resource_soyij")])
+ninja = Color(1, 1, 1, 1)
+
+[node name="Panel" type="Panel" parent="DialogueLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -247.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_myhlm")
+
+[node name="Printer" type="RichTextLabel" parent="DialogueLayer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 14.0
+offset_right = -13.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("21_kpbg1")
+theme_override_font_sizes/normal_font_size = 40
 
 [connection signal="wave_ended" from="WaveManager" to="." method="_on_wave_ended"]
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_timer_timeout"]
@@ -383,3 +471,4 @@ vertical_alignment = 1
 [connection signal="card_selected" from="CardSelect" to="." method="_on_card_selected"]
 [connection signal="pressed" from="CardSelect/Button" to="CardSelect" method="_on_continue_button_pressed"]
 [connection signal="visibility_changed" from="WaveSpawnText" to="WaveSpawnText" method="on_visiblilty_change"]
+[connection signal="dialogue_finished" from="DialogueLayer" to="." method="_on_dialogue_layer_dialogue_finished"]

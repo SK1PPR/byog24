@@ -13,7 +13,7 @@ extends Node2D
 var current_wave: int = 0
 const WAVE_GAP: int = 8
 	
-func _ready() -> void:
+func _start_waves():
 	$WaveSpawnText.visible = true
 	var timer: Timer = Timer.new()
 	add_child(timer)
@@ -23,7 +23,6 @@ func _ready() -> void:
 	await timer.timeout
 	timer.queue_free()
 	$WaveManager.start_wave(current_wave)
-
 
 func _on_player_health_deplete():
 	%GameOverScreen.visible = true
@@ -48,3 +47,7 @@ func _wave_timeout_over() -> void:
 		$WaveManager.start_wave(current_wave)
 	else:
 		print("Ended")
+
+
+func _on_dialogue_layer_dialogue_finished():
+	_start_waves()

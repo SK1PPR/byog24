@@ -141,12 +141,6 @@ func _on_shield_shield_used(shieldTime: int, df: float) -> void:
 	damageFactor = 1.0
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bs8r"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkw4s"]
-bg_color = Color(0.282968, 0.697788, 0.401912, 1)
-
 [sub_resource type="Gradient" id="Gradient_dg3yn"]
 offsets = PackedFloat32Array(0, 0.441704, 0.847534, 1)
 colors = PackedColorArray(0.179995, 0.181356, 0.123274, 1, 0.975336, 0.975336, 0.975336, 1, 0.976644, 0.976644, 0.976644, 1, 1, 1, 1, 1)
@@ -157,6 +151,12 @@ size = Vector2(72, 129)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4s222"]
 radius = 32.0055
 height = 127.953
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bs8r"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkw4s"]
+bg_color = Color(0.282968, 0.697788, 0.401912, 1)
 
 [node name="player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_der1l")
@@ -170,21 +170,6 @@ modulate = Color(0.408329, 0.408329, 0.408329, 1)
 self_modulate = Color(0.340339, 0.340339, 0.340339, 1)
 position = Vector2(-4, 68)
 texture = ExtResource("2_pc3o8")
-
-[node name="ProgressBar" type="ProgressBar" parent="shadow"]
-unique_name_in_owner = true
-light_mask = 7
-visibility_layer = 3
-offset_left = -66.0
-offset_top = 52.0
-offset_right = -62.0
-offset_bottom = 79.0
-scale = Vector2(35.8032, 0.800667)
-theme_override_styles/background = SubResource("StyleBoxFlat_6bs8r")
-theme_override_styles/fill = SubResource("StyleBoxFlat_wkw4s")
-value = 100.0
-rounded = true
-show_percentage = false
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(2, -48)
@@ -224,3 +209,18 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_4s222")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+light_mask = 7
+visibility_layer = 3
+offset_left = -70.0
+offset_top = -132.0
+offset_right = -66.0
+offset_bottom = -105.0
+scale = Vector2(35.8032, 0.800667)
+theme_override_styles/background = SubResource("StyleBoxFlat_6bs8r")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wkw4s")
+value = 100.0
+rounded = true
+show_percentage = false
