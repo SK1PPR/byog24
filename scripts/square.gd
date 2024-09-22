@@ -17,15 +17,15 @@ func _ready():
 	parent_node = get_parent()
 
 func type0movement(direction):
-	return direction* 650.0
+	return direction* 600.0
 
 func type1movement(direction):
 	direction[1] = direction[1]*5000.0
-	direction[0] = direction[0]*10000.0
+	direction[0] = direction[0]*7500.0
 	return direction
 
 func type2movement(direction):
-	direction[1] = direction[1]*10000.0
+	direction[1] = direction[1]*7500.0
 	direction[0] = direction[0]*5000.0
 	return direction
 

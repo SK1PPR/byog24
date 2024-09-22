@@ -43,7 +43,7 @@ script/source = "extends CharacterBody2D
 signal health_deplete
 
 var health = 100.0
-const DAMAGE_RATE = 20.0
+const DAMAGE_RATE = 10.0
 
 
 var tilt_angle = 0.0
