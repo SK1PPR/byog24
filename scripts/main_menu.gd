@@ -6,6 +6,7 @@ func _ready():
 	$Options.visible = false
 
 func _on_start_pressed():
+	RainMusic.stop_rain()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
