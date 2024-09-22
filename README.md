@@ -1,9 +1,8 @@
-# Hell^2^
+# Hell² (Hell Square)
 ### A 2D RPG made in Godot
 
 ## Short Description
 In Hell² (Hell Square), a rectangular ninja battles evolving geometric enemies in Hell, adapting his abilities with power-ups after each wave to survive and reunite with his family.
-
 ## Game Title: Hell² (Hell Square)
 
 ### Description:
