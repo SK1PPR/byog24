@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://frhhprjg8xrl"]
+[gd_scene load_steps=6 format=3 uid="uid://frhhprjg8xrl"]
 
 [ext_resource type="Script" path="res://scripts/triangle.gd" id="1_rsi32"]
 [ext_resource type="Texture2D" uid="uid://b4utmi0oj1lxd" path="res://assets/shadow.png" id="2_077nh"]
@@ -7,9 +7,6 @@
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kxj3v"]
 polygon = PackedVector2Array(-1, -49, -51, 47, 51, 49)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfdmx"]
-size = Vector2(84, 86)
 
 [node name="triangle" type="CharacterBody2D"]
 collision_layer = 2
@@ -28,11 +25,10 @@ occluder = SubResource("OccluderPolygon2D_kxj3v")
 scale = Vector2(1.01, 1)
 texture = ExtResource("2_bwsui")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_sfdmx")
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 energy = 0.7
 texture = ExtResource("3_n86wb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1, -49, -51, 48, 51, 48)

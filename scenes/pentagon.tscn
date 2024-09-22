@@ -1,17 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6s0vfev5tf8l"]
+[gd_scene load_steps=6 format=3 uid="uid://b6s0vfev5tf8l"]
 
 [ext_resource type="Script" path="res://scripts/pentagon.gd" id="1_j2wyj"]
 [ext_resource type="Texture2D" uid="uid://b4utmi0oj1lxd" path="res://assets/shadow.png" id="2_w0su3"]
-[ext_resource type="Texture2D" uid="uid://dfo7suu13eoru" path="res://assets/triangle.png" id="3_8bfao"]
+[ext_resource type="Texture2D" uid="uid://b1k51a2a0v7ri" path="res://assets/pentagon.png" id="3_0l0qd"]
 [ext_resource type="Texture2D" uid="uid://bx0qlsrfsx011" path="res://assets/pointlight.webp" id="4_o8k4p"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kxj3v"]
-polygon = PackedVector2Array(-1, -49, -51, 47, 51, 49)
+polygon = PackedVector2Array(8, -70, -71, -34, -50, 50, 30, 69, 75, -9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfdmx"]
-size = Vector2(84, 86)
-
-[node name="triangle" type="CharacterBody2D"]
+[node name="pentagon" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_j2wyj")
 
@@ -22,17 +19,18 @@ position = Vector2(-2, 54)
 texture = ExtResource("2_w0su3")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-4, -1)
 occluder = SubResource("OccluderPolygon2D_kxj3v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.01, 1)
-texture = ExtResource("3_8bfao")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_sfdmx")
+position = Vector2(-9.53674e-07, -2)
+scale = Vector2(0.830714, 0.822489)
+texture = ExtResource("3_0l0qd")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 energy = 0.7
 texture = ExtResource("4_o8k4p")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-55, 46, 22, 69, 69, -9, 7, -76, -68, -32)

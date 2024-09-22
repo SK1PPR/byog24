@@ -1,16 +1,18 @@
-[gd_scene load_steps=60 format=3 uid="uid://bhd1q0c8dovan"]
+[gd_scene load_steps=62 format=3 uid="uid://bhd1q0c8dovan"]
 
 [ext_resource type="PackedScene" uid="uid://c1232bb68fhy6" path="res://scenes/player.tscn" id="1_j7f5f"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_m2lt0"]
 [ext_resource type="Shader" path="res://shaders/main.gdshader" id="1_vydfm"]
-[ext_resource type="PackedScene" uid="uid://2ltbutl066bk" path="res://scenes/candles.tscn" id="2_j8adm"]
-[ext_resource type="PackedScene" uid="uid://casjqsckyisre" path="res://scenes/candles_darker.tscn" id="3_004in"]
+[ext_resource type="PackedScene" path="res://scenes/candles.tscn" id="2_j8adm"]
+[ext_resource type="PackedScene" path="res://scenes/candles_darker.tscn" id="3_004in"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_6qcvf"]
 [ext_resource type="PackedScene" uid="uid://byl3dfrhj11vx" path="res://data/weapons/pistol.tscn" id="3_ttt1o"]
 [ext_resource type="PackedScene" uid="uid://frhhprjg8xrl" path="res://scenes/triangle.tscn" id="4_06rle"]
 [ext_resource type="PackedScene" uid="uid://gy88wl32c56y" path="res://scenes/square.tscn" id="5_nksia"]
 [ext_resource type="Script" path="res://scripts/wave_manager.gd" id="6_qxm8f"]
 [ext_resource type="PackedScene" uid="uid://b6s0vfev5tf8l" path="res://scenes/pentagon.tscn" id="7_ix11m"]
+[ext_resource type="PackedScene" uid="uid://eqagoykh5r0q" path="res://data/weapons/sniper.tscn" id="11_kwx25"]
+[ext_resource type="PackedScene" uid="uid://bxnaw4pdyf808" path="res://data/weapons/machine_gun.tscn" id="12_w0nqc"]
 [ext_resource type="Script" path="res://scripts/PowerupRange.gd" id="16_0oi6n"]
 [ext_resource type="Script" path="res://scripts/powerup_manager.gd" id="16_xl5kd"]
 [ext_resource type="Script" path="res://scripts/first_aid.gd" id="17_3jxuv"]
@@ -395,6 +397,12 @@ one_shot = true
 
 [node name="pistol" parent="player" instance=ExtResource("3_ttt1o")]
 position = Vector2(82, 0)
+
+[node name="sniper" parent="player" instance=ExtResource("11_kwx25")]
+
+[node name="machine_gun" parent="player" instance=ExtResource("12_w0nqc")]
+
+[node name="machine_gun2" parent="player" instance=ExtResource("12_w0nqc")]
 
 [node name="PowerupRange" type="Area2D" parent="player"]
 collision_mask = 2
