@@ -379,5 +379,6 @@ vertical_alignment = 1
 [connection signal="shield_used" from="PowerupManager/Shield" to="player" method="_on_shield_shield_used"]
 [connection signal="poison_aura_used" from="PowerupManager/PoisonAura" to="player/PowerupRange" method="_on_poison_aura_used"]
 [connection signal="card_selected" from="CardSelect" to="." method="_on_card_selected"]
+[connection signal="visibility_changed" from="CardSelect" to="CardSelect" method="_on_visibility_changed"]
 [connection signal="pressed" from="CardSelect/Button" to="CardSelect" method="_on_continue_button_pressed"]
 [connection signal="visibility_changed" from="WaveSpawnText" to="WaveSpawnText" method="on_visiblilty_change"]

@@ -7,3 +7,4 @@
 script = ExtResource("1_t2pqw")
 icon = ExtResource("1_o7cb5")
 ind = 0
+desc = "Are you restarted"

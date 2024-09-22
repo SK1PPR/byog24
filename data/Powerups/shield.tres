@@ -7,3 +7,4 @@
 script = ExtResource("1_slcmh")
 icon = ExtResource("1_l1bde")
 ind = 1
+desc = "Gives you shield"
