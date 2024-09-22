@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b4utmi0oj1lxd" path="res://assets/shadow.png" id="2_iep20"]
 [ext_resource type="Texture2D" uid="uid://biwpcfrnnwtxf" path="res://assets/square.png" id="2_jqc2r"]
 [ext_resource type="Texture2D" uid="uid://bx0qlsrfsx011" path="res://assets/pointlight.webp" id="3_7a5pq"]
-[ext_resource type="Script" path="res://scripts/trail.gd" id="5_hhmgs"]
+[ext_resource type="Script" path="res://scripts/trail.gd" id="5_l7uun"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kxj3v"]
 polygon = PackedVector2Array(-48, -48, -51, 47, 51, 49, 50, -52)
@@ -12,8 +12,8 @@ polygon = PackedVector2Array(-48, -48, -51, 47, 51, 49, 50, -52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfdmx"]
 size = Vector2(84, 86)
 
-[sub_resource type="Curve" id="Curve_la4gj"]
-_data = [Vector2(0.0157895, 1), 0.0, 0.0, 0, 0, Vector2(0.947368, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_24ab0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="square" type="CharacterBody2D"]
@@ -45,7 +45,8 @@ texture = ExtResource("3_7a5pq")
 
 [node name="Line2D" type="Line2D" parent="."]
 top_level = true
+points = PackedVector2Array(7, 35, -108, 58, -284, 61)
 width = 30.0
-width_curve = SubResource("Curve_la4gj")
-script = ExtResource("5_hhmgs")
+width_curve = SubResource("Curve_24ab0")
+script = ExtResource("5_l7uun")
 MAX_LENGTH = 40
